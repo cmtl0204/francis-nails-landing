@@ -1,4 +1,4 @@
-import {AfterViewInit, Component, HostListener, signal} from '@angular/core';
+import {AfterViewInit, Component, HostListener, OnInit, signal} from '@angular/core';
 import {NgClass} from '@angular/common';
 
 @Component({
@@ -9,13 +9,13 @@ import {NgClass} from '@angular/common';
   templateUrl: './home.html',
   styleUrl: './home.scss',
 })
-export class Home implements AfterViewInit{
+export class Home implements  OnInit{
   isScrolled = false;
   navbarHeight = 0;
 
-  ngAfterViewInit() {
+  ngOnInit() {
     const nav = document.querySelector('nav');
-    this.navbarHeight = nav?.clientHeight ?? 0;
+    this.navbarHeight = 120;
   }
 
   @HostListener('window:scroll')

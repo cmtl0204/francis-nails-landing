@@ -37,7 +37,9 @@
         <a [class.text-text-inverse]="!isScrolled"
            [class.text-text-muted]="isScrolled"
            href="#contacto" class="text-text-inverse hover:text-accent font-medium transition-250">Contacto</a>
-        <button onclick="scrollToBooking()" class="btn-primary">Reservar Cita</button>
+        @if(mobileMenuOpen){
+          <button onclick="scrollToBooking()" class="btn-primary">Reservar Cita</button>
+        }
       </div>
 
       <!-- Mobile Menu Button -->

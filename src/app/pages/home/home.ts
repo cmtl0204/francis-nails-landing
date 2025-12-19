@@ -38,4 +38,8 @@ export class Home implements  OnInit{
   onResize() {
     if (window.innerWidth >= 768) this.closeMobileMenu();
   }
+
+  reserve(){
+    window.location.href = "https://app.francis-nails.com/public/appointments";
+  }
 }

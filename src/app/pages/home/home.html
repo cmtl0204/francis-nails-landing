@@ -1,0 +1,1649 @@
+<!-- Navigation Header -->
+<nav class="fixed top-0 w-full z-50 pb-20 transition-all duration-300"
+     [ngClass]="isScrolled
+    ? 'bg-white/80 backdrop-blur-md shadow-lg'
+    : 'bg-transparent'
+  ">
+  <div class="container-custom">
+    <div class="flex items-center justify-between py-4">
+      <!-- Logo -->
+      <div class="flex items-center space-x-3">
+        <img src="/logo.png" alt="">
+
+        <div>
+          <h1 [class.text-text-inverse]="!isScrolled"
+              [class.text-text-muted]="isScrolled"
+              class="text-2xl font-headline font-bold text-primary">Francis Nails & Beauty Spa</h1>
+          <p [class.text-text-inverse]="!isScrolled"
+             [class.text-text-muted]="isScrolled"
+             class="text-md font-accent">Relájate, brilla y ponte guapa</p>
+        </div>
+      </div>
+
+      <!-- Desktop Navigation -->
+      <div class="hidden md:flex items-center space-x-8">
+        <a [class.text-text-inverse]="!isScrolled"
+           [class.text-text-muted]="isScrolled"
+           href="#servicios" class=" hover:text-accent font-medium transition-250">Servicios</a>
+        <a [class.text-text-inverse]="!isScrolled"
+           [class.text-text-muted]="isScrolled"
+           href="#galeria" class="text-text-inverse hover:text-accent font-medium transition-250">Galería</a>
+        <a [class.text-text-inverse]="!isScrolled"
+           [class.text-text-muted]="isScrolled"
+           href="#testimonios" class="text-text-inverse hover:text-accent font-medium transition-250">Testimonios</a>
+        <a [class.text-text-inverse]="!isScrolled"
+           [class.text-text-muted]="isScrolled"
+           href="#precios" class="text-text-inverse hover:text-accent font-medium transition-250">Precios</a>
+        <a [class.text-text-inverse]="!isScrolled"
+           [class.text-text-muted]="isScrolled"
+           href="#contacto" class="text-text-inverse hover:text-accent font-medium transition-250">Contacto</a>
+        <button onclick="scrollToBooking()" class="btn-primary">Reservar Cita</button>
+      </div>
+
+      <!-- Mobile Menu Button -->
+      <button type="button"
+              class="md:hidden text-primary"
+              (click)="toggleMobileMenu()"
+              aria-controls="mobile-menu"
+              [attr.aria-expanded]="mobileMenuOpen">
+        <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+        </svg>
+      </button>
+    </div>
+
+    <!-- Mobile Menu -->
+    <div id="mobile-menu"
+         class="md:hidden pb-4 bg-white/80 backdrop-blur-md shadow-lg"
+         [class.hidden]="!mobileMenuOpen">
+      <div class="flex flex-col space-y-3">
+        <a href="#servicios" [class.text-text-inverse]="!isScrolled"
+           [class.text-text-muted]="isScrolled"
+           class="hover:text-accent font-medium transition-250 py-2 px-4">Servicios</a>
+        <a href="#galeria" [class.text-text-inverse]="!isScrolled"
+           [class.text-text-muted]="isScrolled"
+           class="hover:text-accent font-medium transition-250 py-2 px-4">Galería</a>
+        <a href="#testimonios" [class.text-text-inverse]="!isScrolled"
+           [class.text-text-muted]="isScrolled"
+           class="hover:text-accent font-medium transition-250 py-2 px-4">Testimonios</a>
+        <a href="#precios" [class.text-text-inverse]="!isScrolled"
+           [class.text-text-muted]="isScrolled"
+           class="hover:text-accent font-medium transition-250 py-2 px-4">Precios</a>
+        <a href="#contacto" [class.text-text-inverse]="!isScrolled"
+           [class.text-text-muted]="isScrolled"
+           class="hover:text-accent font-medium transition-250 py-2 px-4">Contacto</a>
+        <button onclick="scrollToBooking()" class="btn-primary w-full mt-2">Reservar Cita</button>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<!-- Hero Section -->
+<section
+  [style.paddingTop.px]="navbarHeight"
+  id="hero" class="relative min-h-screen flex items-center pt-20 overflow-hidden">
+  <!-- Background Image with Overlay -->
+  <div class="absolute inset-0 z-0">
+    <img src="https://img.rocket.new/generatedImages/rocket_gen_img_19af3d5cb-1764745991401.png"
+         alt="Elegante spa de belleza con ambiente relajante y decoración lujosa"
+         class="w-full h-full object-cover"
+         onerror="this.src='https://images.unsplash.com/photo-1560066984-138dadb4c035?q=80&w=2940&auto=format&fit=crop'; this.onerror=null;">
+    <div class="absolute inset-0 gradient-overlay"></div>
+  </div>
+
+  <!-- Hero Content -->
+  <div class="container-custom relative z-10">
+    <div class="max-w-4xl mx-auto text-center text-text-inverse">
+      <h1 class="text-5xl md:text-6xl lg:text-7xl text-text-inverse font-headline font-bold mb-6 animate-fade-in">
+        Relájate, Brilla y Ponte Guapa!
+      </h1>
+      <p class="text-xl md:text-2xl mb-8 text-secondary-light animate-slide-up">
+        Arte profesional de uñas, diseño de cejas y realce de pestañas
+      </p>
+
+      <!-- CTA Buttons -->
+      <div class="flex flex-col sm:flex-row gap-4 justify-center mb-12 animate-scale-in">
+        <button onclick="scrollToBooking()" class="btn-primary text-lg px-10 py-5">
+                        <span class="flex items-center justify-center gap-2">
+                            <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                      d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
+                            </svg>
+                            Reserva Tu Cita Ahora
+                        </span>
+        </button>
+        <button onclick="showServicesOverlay()"
+                class="btn-outline text-text-inverse text-lg px-10 py-5 bg-surface bg-opacity-20 backdrop-blur-sm">
+          Ver Nuestros Servicios
+        </button>
+      </div>
+
+      <!-- Trust Bar -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-3xl mx-auto">
+        <div class="bg-surface bg-opacity-20 backdrop-blur-md rounded-xl p-6 border border-accent">
+          <div class="text-4xl font-bold text-accent mb-2" id="appointments-counter">20</div>
+          <p class="text-sm text-secondary-light">Citas Completadas Este Mes</p>
+        </div>
+        <div class="bg-surface bg-opacity-20 backdrop-blur-md rounded-xl p-6 border border-accent">
+          <div class="text-4xl font-bold text-accent mb-2">8+</div>
+          <p class="text-sm text-secondary-light">Años de Experiencia</p>
+        </div>
+        <div class="bg-surface bg-opacity-20 backdrop-blur-md rounded-xl p-6 border border-accent">
+          <div class="text-4xl font-bold text-accent mb-2" id="satisfaction-counter">100%</div>
+          <p class="text-sm text-secondary-light">Satisfacción del Cliente</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scroll Indicator -->
+  <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
+    <svg width="24" height="24" fill="none" stroke="white" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"/>
+    </svg>
+  </div>
+</section>
+
+<!-- Problem Agitation Section -->
+<section id="problema" class="section bg-surface">
+  <div class="container-custom">
+    <div class="max-w-4xl mx-auto text-center mb-16">
+      <h2 class="text-4xl md:text-5xl font-headline font-bold mb-6">
+        ¿Te Sientes Identificada con Estas Situaciones?
+      </h2>
+      <p class="text-xl text-text-secondary">
+        Sabemos lo frustrante que puede ser mantener tu belleza con métodos caseros
+      </p>
+    </div>
+
+    <div class="grid md:grid-cols-3 gap-8">
+      <!-- Problem Card 1 -->
+      <div class="card card-hover text-center">
+        <div class="w-20 h-20 mx-auto mb-6 rounded-full bg-primary-50 flex items-center justify-center">
+          <img src="https://images.unsplash.com/photo-1710020491430-aec9e7298b18"
+               alt="Icono de esmalte de uñas descascarado" width="40" height="40">
+        </div>
+        <h3 class="text-2xl font-headline font-semibold mb-4">Esmalte Descascarado</h3>
+        <p class="text-text-secondary leading-relaxed">
+          Ese momento incómodo antes de una reunión importante cuando notas que tu esmalte casero se ha descascarado y
+          no tienes tiempo para arreglarlo
+        </p>
+      </div>
+
+      <!-- Problem Card 2 -->
+      <div class="card card-hover text-center">
+        <div class="w-20 h-20 mx-auto mb-6 rounded-full bg-primary-50 flex items-center justify-center">
+          <img src="https://img.rocket.new/generatedImages/rocket_gen_img_11fc9373a-1766157208580.png"
+               alt="Icono de cejas desparejas" width="40" height="40">
+        </div>
+        <h3 class="text-2xl font-headline font-semibold mb-4">Cejas Desparejas</h3>
+        <p class="text-text-secondary leading-relaxed">
+          Intentos fallidos de dar forma a tus cejas en casa que resultan en formas asimétricas y te hacen sentir
+          insegura
+        </p>
+      </div>
+
+      <!-- Problem Card 3 -->
+      <div class="card card-hover text-center">
+        <div class="w-20 h-20 mx-auto mb-6 rounded-full bg-primary-50 flex items-center justify-center">
+          <img src="https://img.rocket.new/generatedImages/rocket_gen_img_15d5127d6-1764681955800.png"
+               alt="Icono de pestañas escasas" width="40" height="40">
+        </div>
+        <h3 class="text-2xl font-headline font-semibold mb-4">Pestañas Escasas</h3>
+        <p class="text-text-secondary leading-relaxed">
+          Pestañas que no tienen el volumen ni la longitud que deseas, afectando tu confianza y tu apariencia general
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Solution Section -->
+<section id="solucion" class="section">
+  <div class="container-custom">
+    <div class="max-w-6xl mx-auto">
+      <div class="text-center mb-16">
+        <h2 class="text-4xl md:text-5xl font-headline font-bold mb-6">
+          La Solución Profesional que Mereces
+        </h2>
+        <p class="text-xl text-text-secondary max-w-3xl mx-auto">
+          En Francis Beauty Spa, transformamos tus preocupaciones de belleza en resultados profesionales duraderos
+        </p>
+      </div>
+
+      <!-- Split Screen Comparison -->
+      <div class="grid md:grid-cols-2 gap-8 items-center">
+        <!-- DIY Frustrations -->
+        <div class="bg-error-light bg-opacity-10 rounded-2xl p-8 border-2 border-error-light">
+          <h3 class="text-2xl font-headline font-semibold mb-6 text-error-dark">Métodos Caseros</h3>
+          <ul class="space-y-4">
+            <li class="flex items-start gap-3">
+              <svg class="w-6 h-6 text-error flex-shrink-0 mt-1" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd"
+                      d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z"
+                      clip-rule="evenodd"/>
+              </svg>
+              <span class="text-text-secondary">Resultados inconsistentes y poco duraderos</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <svg class="w-6 h-6 text-error flex-shrink-0 mt-1" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd"
+                      d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z"
+                      clip-rule="evenodd"/>
+              </svg>
+              <span class="text-text-secondary">Riesgo de daño a uñas, piel y pestañas</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <svg class="w-6 h-6 text-error flex-shrink-0 mt-1" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd"
+                      d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z"
+                      clip-rule="evenodd"/>
+              </svg>
+              <span class="text-text-secondary">Tiempo perdido en intentos fallidos</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <svg class="w-6 h-6 text-error flex-shrink-0 mt-1" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd"
+                      d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z"
+                      clip-rule="evenodd"/>
+              </svg>
+              <span class="text-text-secondary">Falta de productos profesionales de calidad</span>
+            </li>
+          </ul>
+          <div class="mt-6 overflow-hidden rounded-lg">
+            <img src="https://img.rocket.new/generatedImages/rocket_gen_img_1d52c8119-1765905648585.png"
+                 alt="Mujer frustrada intentando arreglar sus uñas en casa con resultados poco satisfactorios"
+                 class="w-full h-64 object-cover"
+                 onerror="this.src='https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?q=80&w=2940&auto=format&fit=crop'; this.onerror=null;">
+          </div>
+        </div>
+
+        <!-- Professional Results -->
+        <div class="bg-success-light bg-opacity-10 rounded-2xl p-8 border-2 border-accent">
+          <h3 class="text-2xl font-headline font-semibold mb-6 text-primary">Francis Beauty Spa</h3>
+          <ul class="space-y-4">
+            <li class="flex items-start gap-3">
+              <svg class="w-6 h-6 text-success flex-shrink-0 mt-1" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd"
+                      d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                      clip-rule="evenodd"/>
+              </svg>
+              <span class="text-text-secondary">Resultados profesionales que duran semanas</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <svg class="w-6 h-6 text-success flex-shrink-0 mt-1" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd"
+                      d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                      clip-rule="evenodd"/>
+              </svg>
+              <span class="text-text-secondary">Técnicas seguras con productos premium</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <svg class="w-6 h-6 text-success flex-shrink-0 mt-1" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd"
+                      d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                      clip-rule="evenodd"/>
+              </svg>
+              <span class="text-text-secondary">Experiencia relajante y rejuvenecedora</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <svg class="w-6 h-6 text-success flex-shrink-0 mt-1" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd"
+                      d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                      clip-rule="evenodd"/>
+              </svg>
+              <span class="text-text-secondary">Técnicos certificados con años de experiencia</span>
+            </li>
+          </ul>
+          <div class="mt-6 overflow-hidden rounded-lg">
+            <img src="https://img.rocket.new/generatedImages/rocket_gen_img_118f54fff-1764648660031.png"
+                 alt="Mujer sonriente recibiendo tratamiento profesional de manicura en spa de lujo con resultados impecables"
+                 class="w-full h-64 object-cover"
+                 onerror="this.src='https://images.unsplash.com/photo-1519415510236-718bdfcd89c8?q=80&w=2940&auto=format&fit=crop'; this.onerror=null;">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Services Showcase Section -->
+<section id="servicios" class="section bg-surface">
+  <div class="container-custom">
+    <div class="text-center mb-16">
+      <h2 class="text-4xl md:text-5xl font-headline font-bold mb-6">
+        Nuestros Servicios Premium
+      </h2>
+      <p class="text-xl text-text-secondary max-w-3xl mx-auto">
+        Descubre nuestra gama completa de tratamientos de belleza profesionales
+      </p>
+    </div>
+
+    <!-- Service Category Tabs -->
+    <div class="flex flex-wrap justify-center gap-4 mb-12">
+      <button onclick="filterServices('todos')"
+              class="service-filter-btn active px-6 py-3 rounded-full font-cta font-semibold transition-250"
+              data-category="todos">
+        Todos los Servicios
+      </button>
+      <button onclick="filterServices('unas')"
+              class="service-filter-btn px-6 py-3 rounded-full font-cta font-semibold transition-250"
+              data-category="unas">
+        Uñas
+      </button>
+      <button onclick="filterServices('cejas')"
+              class="service-filter-btn px-6 py-3 rounded-full font-cta font-semibold transition-250"
+              data-category="cejas">
+        Cejas
+      </button>
+      <button onclick="filterServices('pestanas')"
+              class="service-filter-btn px-6 py-3 rounded-full font-cta font-semibold transition-250"
+              data-category="pestanas">
+        Pestañas
+      </button>
+    </div>
+
+    <!-- Services Grid -->
+    <div id="services-grid" class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <!-- Manicure Service -->
+      <div class="service-card card card-hover" data-category="unas">
+        <div class="relative overflow-hidden rounded-lg mb-6 group">
+          <img src="https://img.rocket.new/generatedImages/rocket_gen_img_1ddeab881-1764741263421.png"
+               alt="Manicura profesional con arte de uñas elegante y esmalte de larga duración"
+               class="w-full h-64 object-cover transition-transform duration-300 group-hover:scale-110"
+               onerror="this.src='https://img.rocket.new/generatedImages/rocket_gen_img_11b8a0969-1764815783853.png'; this.onerror=null;">
+          <div
+            class="absolute inset-0 bg-gradient-primary opacity-0 group-hover:opacity-90 transition-opacity duration-300 flex items-center justify-center">
+            <button onclick="showServiceDetails('manicure')" class="btn-primary">Ver Detalles</button>
+          </div>
+        </div>
+        <div class="flex items-center gap-2 mb-3">
+          <img src="https://img.rocket.new/generatedImages/rocket_gen_img_16658850a-1765795261079.png"
+               alt="Icono de manicura" width="24" height="24">
+          <span class="badge badge-primary">Popular</span>
+        </div>
+        <h3 class="text-2xl font-headline font-semibold mb-3">Manicura Clásica</h3>
+        <p class="text-text-secondary mb-4">Tratamiento completo de uñas con forma, cutícula y esmalte de larga
+          duración</p>
+        <div class="flex items-center justify-between">
+          <span class="text-2xl font-bold text-primary">35€</span>
+          <span class="text-sm text-text-muted">60 minutos</span>
+        </div>
+      </div>
+
+      <!-- Gel Nails Service -->
+      <div class="service-card card card-hover" data-category="unas">
+        <div class="relative overflow-hidden rounded-lg mb-6 group">
+          <img src="https://img.rocket.new/generatedImages/rocket_gen_img_104a972a5-1764882934719.png"
+               alt="Uñas de gel con diseño artístico y acabado brillante profesional"
+               class="w-full h-64 object-cover transition-transform duration-300 group-hover:scale-110"
+               onerror="this.src='https://images.pexels.com/photos/3997987/pexels-photo-3997987.jpeg?auto=compress&cs=tinysrgb&w=800'; this.onerror=null;">
+          <div
+            class="absolute inset-0 bg-gradient-primary opacity-0 group-hover:opacity-90 transition-opacity duration-300 flex items-center justify-center">
+            <button onclick="showServiceDetails('gel')" class="btn-primary">Ver Detalles</button>
+          </div>
+        </div>
+        <div class="flex items-center gap-2 mb-3">
+          <img src="https://img.rocket.new/generatedImages/rocket_gen_img_174fe83ec-1764815786004.png"
+               alt="Icono de uñas de gel" width="24" height="24">
+          <span class="badge badge-success">Duración 3 semanas</span>
+        </div>
+        <h3 class="text-2xl font-headline font-semibold mb-3">Uñas de Gel</h3>
+        <p class="text-text-secondary mb-4">Manicura de gel con acabado brillante y resistente que dura hasta 3
+          semanas</p>
+        <div class="flex items-center justify-between">
+          <span class="text-2xl font-bold text-primary">45€</span>
+          <span class="text-sm text-text-muted">90 minutos</span>
+        </div>
+      </div>
+
+      <!-- Pedicure Service -->
+      <div class="service-card card card-hover" data-category="unas">
+        <div class="relative overflow-hidden rounded-lg mb-6 group">
+          <img src="https://img.rocket.new/generatedImages/rocket_gen_img_1b010e015-1764741265994.png"
+               alt="Pedicura spa con masaje relajante y tratamiento hidratante para pies"
+               class="w-full h-64 object-cover transition-transform duration-300 group-hover:scale-110"
+               onerror="this.src='https://images.unsplash.com/photo-1519415510236-718bdfcd89c8?q=80&w=800&auto=format&fit=crop'; this.onerror=null;">
+          <div
+            class="absolute inset-0 bg-gradient-primary opacity-0 group-hover:opacity-90 transition-opacity duration-300 flex items-center justify-center">
+            <button onclick="showServiceDetails('pedicure')" class="btn-primary">Ver Detalles</button>
+          </div>
+        </div>
+        <div class="flex items-center gap-2 mb-3">
+          <img src="https://img.rocket.new/generatedImages/rocket_gen_img_1b010e015-1764741265994.png"
+               alt="Icono de pedicura" width="24" height="24">
+          <span class="badge badge-primary">Relajante</span>
+        </div>
+        <h3 class="text-2xl font-headline font-semibold mb-3">Pedicura Spa</h3>
+        <p class="text-text-secondary mb-4">Tratamiento completo con exfoliación, masaje y esmalte para pies
+          perfectos</p>
+        <div class="flex items-center justify-between">
+          <span class="text-2xl font-bold text-primary">40€</span>
+          <span class="text-sm text-text-muted">75 minutos</span>
+        </div>
+      </div>
+
+      <!-- Eyebrow Threading Service -->
+      <div class="service-card card card-hover" data-category="cejas">
+        <div class="relative overflow-hidden rounded-lg mb-6 group">
+          <img src="https://img.rocket.new/generatedImages/rocket_gen_img_1071ea223-1764682598363.png"
+               alt="Depilación de cejas con hilo para forma perfecta y definida"
+               class="w-full h-64 object-cover transition-transform duration-300 group-hover:scale-110"
+               onerror="this.src='https://img.rocket.new/generatedImages/rocket_gen_img_1071ea223-1764682598363.png'; this.onerror=null;">
+          <div
+            class="absolute inset-0 bg-gradient-primary opacity-0 group-hover:opacity-90 transition-opacity duration-300 flex items-center justify-center">
+            <button onclick="showServiceDetails('threading')" class="btn-primary">Ver Detalles</button>
+          </div>
+        </div>
+        <div class="flex items-center gap-2 mb-3">
+          <img src="https://img.rocket.new/generatedImages/rocket_gen_img_111a8c6ed-1765915309749.png"
+               alt="Icono de depilación de cejas" width="24" height="24">
+          <span class="badge badge-primary">Preciso</span>
+        </div>
+        <h3 class="text-2xl font-headline font-semibold mb-3">Depilación con Hilo</h3>
+        <p class="text-text-secondary mb-4">Técnica precisa para cejas perfectamente definidas y simétricas</p>
+        <div class="flex items-center justify-between">
+          <span class="text-2xl font-bold text-primary">15€</span>
+          <span class="text-sm text-text-muted">20 minutos</span>
+        </div>
+      </div>
+
+      <!-- Eyebrow Tinting Service -->
+      <div class="service-card card card-hover" data-category="cejas">
+        <div class="relative overflow-hidden rounded-lg mb-6 group">
+          <img src="https://img.rocket.new/generatedImages/rocket_gen_img_14abfcbd5-1766036660576.png"
+               alt="Tinte de cejas profesional para cejas más definidas y expresivas"
+               class="w-full h-64 object-cover transition-transform duration-300 group-hover:scale-110"
+               onerror="this.src='https://images.pexels.com/photos/3997983/pexels-photo-3997983.jpeg?auto=compress&cs=tinysrgb&w=800'; this.onerror=null;">
+          <div
+            class="absolute inset-0 bg-gradient-primary opacity-0 group-hover:opacity-90 transition-opacity duration-300 flex items-center justify-center">
+            <button onclick="showServiceDetails('tinting')" class="btn-primary">Ver Detalles</button>
+          </div>
+        </div>
+        <div class="flex items-center gap-2 mb-3">
+          <img src="https://img.rocket.new/generatedImages/rocket_gen_img_1ea5ff11e-1766157207936.png"
+               alt="Icono de tinte de cejas" width="24" height="24">
+          <span class="badge badge-success">Duración 4 semanas</span>
+        </div>
+        <h3 class="text-2xl font-headline font-semibold mb-3">Tinte de Cejas</h3>
+        <p class="text-text-secondary mb-4">Coloración profesional para cejas más definidas y expresivas</p>
+        <div class="flex items-center justify-between">
+          <span class="text-2xl font-bold text-primary">20€</span>
+          <span class="text-sm text-text-muted">30 minutos</span>
+        </div>
+      </div>
+
+      <!-- Eyelash Extensions Service -->
+      <div class="service-card card card-hover" data-category="pestanas">
+        <div class="relative overflow-hidden rounded-lg mb-6 group">
+          <img src="https://img.rocket.new/generatedImages/rocket_gen_img_1e39d3feb-1764706401439.png"
+               alt="Extensiones de pestañas voluminosas para mirada dramática y natural"
+               class="w-full h-64 object-cover transition-transform duration-300 group-hover:scale-110"
+               onerror="this.src='https://img.rocket.new/generatedImages/rocket_gen_img_13f820f56-1766157208224.png'; this.onerror=null;">
+          <div
+            class="absolute inset-0 bg-gradient-primary opacity-0 group-hover:opacity-90 transition-opacity duration-300 flex items-center justify-center">
+            <button onclick="showServiceDetails('extensions')" class="btn-primary">Ver Detalles</button>
+          </div>
+        </div>
+        <div class="flex items-center gap-2 mb-3">
+          <img src="https://img.rocket.new/generatedImages/rocket_gen_img_15cb76345-1765571571703.png"
+               alt="Icono de extensiones de pestañas" width="24" height="24">
+          <span class="badge badge-primary">Más Popular</span>
+        </div>
+        <h3 class="text-2xl font-headline font-semibold mb-3">Extensiones de Pestañas</h3>
+        <p class="text-text-secondary mb-4">Pestañas voluminosas y naturales que realzan tu mirada sin esfuerzo</p>
+        <div class="flex items-center justify-between">
+          <span class="text-2xl font-bold text-primary">80€</span>
+          <span class="text-sm text-text-muted">120 minutos</span>
+        </div>
+      </div>
+
+      <!-- Lash Lift Service -->
+      <div class="service-card card card-hover" data-category="pestanas">
+        <div class="relative overflow-hidden rounded-lg mb-6 group">
+          <img src="https://images.unsplash.com/photo-1583001931096-959e9a1a6223?q=80&w=800&auto=format&fit=crop"
+               alt="Lifting de pestañas para pestañas naturalmente rizadas y elevadas"
+               class="w-full h-64 object-cover transition-transform duration-300 group-hover:scale-110"
+               onerror="this.src='https://img.rocket.new/generatedImages/rocket_gen_img_1152113fe-1764637212519.png'; this.onerror=null;">
+          <div
+            class="absolute inset-0 bg-gradient-primary opacity-0 group-hover:opacity-90 transition-opacity duration-300 flex items-center justify-center">
+            <button onclick="showServiceDetails('lift')" class="btn-primary">Ver Detalles</button>
+          </div>
+        </div>
+        <div class="flex items-center gap-2 mb-3">
+          <img src="https://img.rocket.new/generatedImages/rocket_gen_img_121244606-1766157208104.png"
+               alt="Icono de lifting de pestañas" width="24" height="24">
+          <span class="badge badge-success">Natural</span>
+        </div>
+        <h3 class="text-2xl font-headline font-semibold mb-3">Lifting de Pestañas</h3>
+        <p class="text-text-secondary mb-4">Riza y eleva tus pestañas naturales para una mirada abierta y fresca</p>
+        <div class="flex items-center justify-between">
+          <span class="text-2xl font-bold text-primary">55€</span>
+          <span class="text-sm text-text-muted">60 minutos</span>
+        </div>
+      </div>
+
+      <!-- Lash Tinting Service -->
+      <div class="service-card card card-hover" data-category="pestanas">
+        <div class="relative overflow-hidden rounded-lg mb-6 group">
+          <img src="https://img.rocket.new/generatedImages/rocket_gen_img_172ec758c-1766157211066.png"
+               alt="Tinte de pestañas para pestañas más oscuras y definidas sin máscara"
+               class="w-full h-64 object-cover transition-transform duration-300 group-hover:scale-110"
+               onerror="this.src='https://images.pexels.com/photos/3997390/pexels-photo-3997390.jpeg?auto=compress&cs=tinysrgb&w=800'; this.onerror=null;">
+          <div
+            class="absolute inset-0 bg-gradient-primary opacity-0 group-hover:opacity-90 transition-opacity duration-300 flex items-center justify-center">
+            <button onclick="showServiceDetails('lash-tint')" class="btn-primary">Ver Detalles</button>
+          </div>
+        </div>
+        <div class="flex items-center gap-2 mb-3">
+          <img src="https://img.rocket.new/generatedImages/rocket_gen_img_170a57b04-1766157207425.png"
+               alt="Icono de tinte de pestañas" width="24" height="24">
+          <span class="badge badge-success">Bajo Mantenimiento</span>
+        </div>
+        <h3 class="text-2xl font-headline font-semibold mb-3">Tinte de Pestañas</h3>
+        <p class="text-text-secondary mb-4">Oscurece tus pestañas para una mirada definida sin necesidad de máscara</p>
+        <div class="flex items-center justify-between">
+          <span class="text-2xl font-bold text-primary">25€</span>
+          <span class="text-sm text-text-muted">30 minutos</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Benefits Section -->
+<section id="beneficios" class="section">
+  <div class="container-custom">
+    <div class="text-center mb-16">
+      <h2 class="text-4xl md:text-5xl font-headline font-bold mb-6">
+        ¿Por Qué Elegir Francis Beauty Spa?
+      </h2>
+      <p class="text-xl text-text-secondary max-w-3xl mx-auto">
+        Experiencia premium que combina técnica profesional con ambiente relajante
+      </p>
+    </div>
+
+    <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+      <!-- Benefit 1 -->
+      <div class="text-center">
+        <div
+          class="w-24 h-24 mx-auto mb-6 rounded-full bg-gradient-primary flex items-center justify-center shadow-primary">
+          <img src="https://img.rocket.new/generatedImages/rocket_gen_img_1cbe27bf9-1765210638795.png"
+               alt="Icono de certificación profesional" width="48" height="48">
+        </div>
+        <h3 class="text-xl font-headline font-semibold mb-3">Técnicos Certificados</h3>
+        <p class="text-text-secondary">
+          Profesionales con años de experiencia y certificaciones internacionales en belleza
+        </p>
+      </div>
+
+      <!-- Benefit 2 -->
+      <div class="text-center">
+        <div
+          class="w-24 h-24 mx-auto mb-6 rounded-full bg-gradient-primary flex items-center justify-center shadow-primary">
+          <img src="https://img.rocket.new/generatedImages/rocket_gen_img_1ad49bdb9-1764847161362.png"
+               alt="Icono de productos premium" width="48" height="48">
+        </div>
+        <h3 class="text-xl font-headline font-semibold mb-3">Productos Premium</h3>
+        <p class="text-text-secondary">
+          Utilizamos solo marcas de primera calidad como OPI, Essie y productos hipoalergénicos
+        </p>
+      </div>
+
+      <!-- Benefit 3 -->
+      <div class="text-center">
+        <div
+          class="w-24 h-24 mx-auto mb-6 rounded-full bg-gradient-primary flex items-center justify-center shadow-primary">
+          <img src="https://img.rocket.new/generatedImages/rocket_gen_img_169e53429-1766157207971.png"
+               alt="Icono de ambiente relajante" width="48" height="48">
+        </div>
+        <h3 class="text-xl font-headline font-semibold mb-3">Ambiente Relajante</h3>
+        <p class="text-text-secondary">
+          Espacio elegante diseñado para tu comodidad con música suave y aromaterapia
+        </p>
+      </div>
+
+      <!-- Benefit 4 -->
+      <div class="text-center">
+        <div
+          class="w-24 h-24 mx-auto mb-6 rounded-full bg-gradient-primary flex items-center justify-center shadow-primary">
+          <img src="https://img.rocket.new/generatedImages/rocket_gen_img_178526225-1765178285821.png"
+               alt="Icono de resultados duraderos" width="48" height="48">
+        </div>
+        <h3 class="text-xl font-headline font-semibold mb-3">Resultados Duraderos</h3>
+        <p class="text-text-secondary">
+          Técnicas profesionales que garantizan belleza que perdura semanas
+        </p>
+      </div>
+    </div>
+
+    <!-- Premium Product Partnerships -->
+    <div class="mt-16 text-center">
+      <h3 class="text-2xl font-headline font-semibold mb-8 text-text-secondary">Trabajamos con las Mejores Marcas</h3>
+      <div class="flex flex-wrap justify-center items-center gap-12 opacity-60">
+        <div class="text-4xl font-bold text-primary">OPI</div>
+        <div class="text-4xl font-bold text-primary">ESSIE</div>
+        <div class="text-4xl font-bold text-primary">CND</div>
+        <div class="text-4xl font-bold text-primary">GELISH</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Before/After Gallery Section -->
+<section id="galeria" class="section bg-surface">
+  <div class="container-custom">
+    <div class="text-center mb-16">
+      <h2 class="text-4xl md:text-5xl font-headline font-bold mb-6">
+        Transformaciones Reales
+      </h2>
+      <p class="text-xl text-text-secondary max-w-3xl mx-auto">
+        Descubre los resultados impresionantes que nuestros clientes han logrado
+      </p>
+    </div>
+
+    <!-- Gallery Filter -->
+    <div class="flex flex-wrap justify-center gap-4 mb-12">
+      <button onclick="filterGallery('todos')"
+              class="gallery-filter-btn active px-6 py-3 rounded-full font-cta font-semibold transition-250">
+        Todas
+      </button>
+      <button onclick="filterGallery('unas')"
+              class="gallery-filter-btn px-6 py-3 rounded-full font-cta font-semibold transition-250">
+        Uñas
+      </button>
+      <button onclick="filterGallery('cejas')"
+              class="gallery-filter-btn px-6 py-3 rounded-full font-cta font-semibold transition-250">
+        Cejas
+      </button>
+      <button onclick="filterGallery('pestanas')"
+              class="gallery-filter-btn px-6 py-3 rounded-full font-cta font-semibold transition-250">
+        Pestañas
+      </button>
+    </div>
+
+    <!-- Gallery Grid -->
+    <div id="gallery-grid" class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <!-- Gallery Item 1 - Nails -->
+      <div class="gallery-item" data-category="unas">
+        <div class="card card-hover overflow-hidden">
+          <div class="relative h-80">
+            <div class="absolute inset-0 grid grid-cols-2">
+              <div class="relative overflow-hidden">
+                <span class="absolute top-2 left-2 bg-error text-white text-xs px-2 py-1 rounded-full z-10">Antes</span>
+                <img src="https://img.rocket.new/generatedImages/rocket_gen_img_1b961d600-1764676128556.png"
+                     alt="Uñas antes del tratamiento profesional de manicura"
+                     class="w-full h-full object-cover"
+                     onerror="this.src='https://images.unsplash.com/photo-1604654894610-df63bc536371?q=80&w=800&auto=format&fit=crop'; this.onerror=null;">
+              </div>
+              <div class="relative overflow-hidden">
+                <span
+                  class="absolute top-2 right-2 bg-success text-white text-xs px-2 py-1 rounded-full z-10">Después</span>
+                <img
+                  src="https://images.pexels.com/photos/1813272/pexels-photo-1813272.jpeg?auto=compress&cs=tinysrgb&w=800"
+                  alt="Uñas después del tratamiento con arte de uñas elegante y esmalte perfecto"
+                  class="w-full h-full object-cover"
+                  onerror="this.src='https://images.unsplash.com/photo-1610992015732-2449b76344bc?q=80&w=800&auto=format&fit=crop'; this.onerror=null;">
+              </div>
+            </div>
+          </div>
+          <div class="p-6">
+            <h4 class="text-lg font-headline font-semibold mb-2">Manicura con Arte</h4>
+            <p class="text-sm text-text-secondary">Transformación completa con diseño floral elegante</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Gallery Item 2 - Eyebrows -->
+      <div class="gallery-item" data-category="cejas">
+        <div class="card card-hover overflow-hidden">
+          <div class="relative h-80">
+            <div class="absolute inset-0 grid grid-cols-2">
+              <div class="relative overflow-hidden">
+                <span class="absolute top-2 left-2 bg-error text-white text-xs px-2 py-1 rounded-full z-10">Antes</span>
+                <img src="https://img.rocket.new/generatedImages/rocket_gen_img_1a8e737ba-1765069591673.png"
+                     alt="Cejas antes del tratamiento de depilación y diseño profesional"
+                     class="w-full h-full object-cover"
+                     onerror="this.src='https://images.unsplash.com/photo-1516975080664-ed2fc6a32937?q=80&w=800&auto=format&fit=crop'; this.onerror=null;">
+              </div>
+              <div class="relative overflow-hidden">
+                <span
+                  class="absolute top-2 right-2 bg-success text-white text-xs px-2 py-1 rounded-full z-10">Después</span>
+                <img
+                  src="https://images.pexels.com/photos/3997991/pexels-photo-3997991.jpeg?auto=compress&cs=tinysrgb&w=800"
+                  alt="Cejas después del tratamiento con forma perfecta y definición profesional"
+                  class="w-full h-full object-cover"
+                  onerror="this.src='https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?q=80&w=800&auto=format&fit=crop'; this.onerror=null;">
+              </div>
+            </div>
+          </div>
+          <div class="p-6">
+            <h4 class="text-lg font-headline font-semibold mb-2">Diseño de Cejas</h4>
+            <p class="text-sm text-text-secondary">Cejas perfectamente definidas y simétricas</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Gallery Item 3 - Lashes -->
+      <div class="gallery-item" data-category="pestanas">
+        <div class="card card-hover overflow-hidden">
+          <div class="relative h-80">
+            <div class="absolute inset-0 grid grid-cols-2">
+              <div class="relative overflow-hidden">
+                <span class="absolute top-2 left-2 bg-error text-white text-xs px-2 py-1 rounded-full z-10">Antes</span>
+                <img src="https://img.rocket.new/generatedImages/rocket_gen_img_18e73c0bc-1764706401157.png"
+                     alt="Pestañas antes del tratamiento de extensiones profesionales"
+                     class="w-full h-full object-cover"
+                     onerror="this.src='https://images.unsplash.com/photo-1583001931096-959e9a1a6223?q=80&w=800&auto=format&fit=crop'; this.onerror=null;">
+              </div>
+              <div class="relative overflow-hidden">
+                <span
+                  class="absolute top-2 right-2 bg-success text-white text-xs px-2 py-1 rounded-full z-10">Después</span>
+                <img src="https://img.rocket.new/generatedImages/rocket_gen_img_1746e4e17-1764706400342.png"
+                     alt="Pestañas después del tratamiento con extensiones voluminosas y naturales"
+                     class="w-full h-full object-cover"
+                     onerror="this.src='https://images.unsplash.com/photo-1588514727390-91fd5ebaef81?q=80&w=800&auto=format&fit=crop'; this.onerror=null;">
+              </div>
+            </div>
+          </div>
+          <div class="p-6">
+            <h4 class="text-lg font-headline font-semibold mb-2">Extensiones de Pestañas</h4>
+            <p class="text-sm text-text-secondary">Volumen dramático con aspecto natural</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Gallery Item 4 - Gel Nails -->
+      <div class="gallery-item" data-category="unas">
+        <div class="card card-hover overflow-hidden">
+          <div class="relative h-80">
+            <div class="absolute inset-0 grid grid-cols-2">
+              <div class="relative overflow-hidden">
+                <span class="absolute top-2 left-2 bg-error text-white text-xs px-2 py-1 rounded-full z-10">Antes</span>
+                <img src="https://images.unsplash.com/photo-1648241815778-fdc8daf0d6ef"
+                     alt="Uñas antes del tratamiento de gel profesional"
+                     class="w-full h-full object-cover"
+                     onerror="this.src='https://images.unsplash.com/photo-1604654894610-df63bc536371?q=80&w=800&auto=format&fit=crop'; this.onerror=null;">
+              </div>
+              <div class="relative overflow-hidden">
+                <span
+                  class="absolute top-2 right-2 bg-success text-white text-xs px-2 py-1 rounded-full z-10">Después</span>
+                <img src="https://img.rocket.new/generatedImages/rocket_gen_img_16be64e95-1765104987846.png"
+                     alt="Uñas después del tratamiento de gel con acabado brillante y duradero"
+                     class="w-full h-full object-cover"
+                     onerror="this.src='https://images.pexels.com/photos/3997987/pexels-photo-3997987.jpeg?auto=compress&cs=tinysrgb&w=800'; this.onerror=null;">
+              </div>
+            </div>
+          </div>
+          <div class="p-6">
+            <h4 class="text-lg font-headline font-semibold mb-2">Uñas de Gel</h4>
+            <p class="text-sm text-text-secondary">Acabado brillante que dura 3 semanas</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Gallery Item 5 - Eyebrow Tinting -->
+      <div class="gallery-item" data-category="cejas">
+        <div class="card card-hover overflow-hidden">
+          <div class="relative h-80">
+            <div class="absolute inset-0 grid grid-cols-2">
+              <div class="relative overflow-hidden">
+                <span class="absolute top-2 left-2 bg-error text-white text-xs px-2 py-1 rounded-full z-10">Antes</span>
+                <img src="https://img.rocket.new/generatedImages/rocket_gen_img_1071ea223-1764682598363.png"
+                     alt="Cejas antes del tratamiento de tinte profesional"
+                     class="w-full h-full object-cover"
+                     onerror="this.src='https://images.unsplash.com/photo-1516975080664-ed2fc6a32937?q=80&w=800&auto=format&fit=crop'; this.onerror=null;">
+              </div>
+              <div class="relative overflow-hidden">
+                <span
+                  class="absolute top-2 right-2 bg-success text-white text-xs px-2 py-1 rounded-full z-10">Después</span>
+                <img src="https://img.rocket.new/generatedImages/rocket_gen_img_1ed4089a0-1764853543236.png"
+                     alt="Cejas después del tratamiento de tinte con color definido y natural"
+                     class="w-full h-full object-cover"
+                     onerror="this.src='https://images.pexels.com/photos/3997983/pexels-photo-3997983.jpeg?auto=compress&cs=tinysrgb&w=800'; this.onerror=null;">
+              </div>
+            </div>
+          </div>
+          <div class="p-6">
+            <h4 class="text-lg font-headline font-semibold mb-2">Tinte de Cejas</h4>
+            <p class="text-sm text-text-secondary">Color natural que realza tu mirada</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Gallery Item 6 - Lash Lift -->
+      <div class="gallery-item" data-category="pestanas">
+        <div class="card card-hover overflow-hidden">
+          <div class="relative h-80">
+            <div class="absolute inset-0 grid grid-cols-2">
+              <div class="relative overflow-hidden">
+                <span class="absolute top-2 left-2 bg-error text-white text-xs px-2 py-1 rounded-full z-10">Antes</span>
+                <img src="https://img.rocket.new/generatedImages/rocket_gen_img_1746976db-1765316014210.png"
+                     alt="Pestañas antes del tratamiento de lifting profesional"
+                     class="w-full h-full object-cover"
+                     onerror="this.src='https://images.unsplash.com/photo-1583001931096-959e9a1a6223?q=80&w=800&auto=format&fit=crop'; this.onerror=null;">
+              </div>
+              <div class="relative overflow-hidden">
+                <span
+                  class="absolute top-2 right-2 bg-success text-white text-xs px-2 py-1 rounded-full z-10">Después</span>
+                <img
+                  src="https://images.pexels.com/photos/3997388/pexels-photo-3997388.jpeg?auto=compress&cs=tinysrgb&w=800"
+                  alt="Pestañas después del tratamiento de lifting con rizo natural y elevado"
+                  class="w-full h-full object-cover"
+                  onerror="this.src='https://images.unsplash.com/photo-1588514727390-91fd5ebaef81?q=80&w=800&auto=format&fit=crop'; this.onerror=null;">
+              </div>
+            </div>
+          </div>
+          <div class="p-6">
+            <h4 class="text-lg font-headline font-semibold mb-2">Lifting de Pestañas</h4>
+            <p class="text-sm text-text-secondary">Rizo natural que abre tu mirada</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Testimonials Section -->
+<section id="testimonios" class="section">
+  <div class="container-custom">
+    <div class="text-center mb-16">
+      <h2 class="text-4xl md:text-5xl font-headline font-bold mb-6">
+        Lo Que Dicen Nuestras Clientas
+      </h2>
+      <p class="text-xl text-text-secondary max-w-3xl mx-auto">
+        Más de 500 clientas satisfechas confían en nosotros para su belleza
+      </p>
+    </div>
+
+    <!-- Testimonials Slider -->
+    <div class="relative">
+      <div class="testimonial-slider flex gap-6 overflow-x-auto pb-6 snap-x snap-mandatory scrollbar-hide">
+        <!-- Testimonial 1 -->
+        <div
+          class="testimonial-card card-testimonial min-w-full md:min-w-[calc(50%-12px)] lg:min-w-[calc(33.333%-16px)] flex-shrink-0">
+          <div class="flex items-center gap-4 mb-4">
+            <img src="https://img.rocket.new/generatedImages/rocket_gen_img_13b9bbc26-1763299384254.png"
+                 alt="Foto de perfil de María González, clienta satisfecha"
+                 class="w-16 h-16 rounded-full object-cover"
+                 onerror="this.src='https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg?auto=compress&cs=tinysrgb&w=100'; this.onerror=null;">
+            <div>
+              <h4 class="font-headline font-semibold text-lg">María González</h4>
+              <div class="flex gap-1">
+                <img src="https://img.rocket.new/generatedImages/rocket_gen_img_184280168-1764677508307.png"
+                     alt="Estrella de calificación" width="16" height="16">
+                <img src="https://img.rocket.new/generatedImages/rocket_gen_img_184280168-1764677508307.png"
+                     alt="Estrella de calificación" width="16" height="16">
+                <img src="https://img.rocket.new/generatedImages/rocket_gen_img_184280168-1764677508307.png"
+                     alt="Estrella de calificación" width="16" height="16">
+                <img src="https://img.rocket.new/generatedImages/rocket_gen_img_184280168-1764677508307.png"
+                     alt="Estrella de calificación" width="16" height="16">
+                <img src="https://img.rocket.new/generatedImages/rocket_gen_img_184280168-1764677508307.png"
+                     alt="Estrella de calificación" width="16" height="16">
+              </div>
+            </div>
+          </div>
+          <p class="text-text-secondary italic mb-4">
+            "Las extensiones de pestañas son increíbles. Me despierto lista para el día sin necesidad de maquillaje. El
+            ambiente del spa es tan relajante que es mi momento de autocuidado favorito cada mes."
+          </p>
+          <span class="text-sm text-text-muted">Hace 2 semanas</span>
+        </div>
+
+        <!-- Testimonial 2 -->
+        <div
+          class="testimonial-card card-testimonial min-w-full md:min-w-[calc(50%-12px)] lg:min-w-[calc(33.333%-16px)] flex-shrink-0">
+          <div class="flex items-center gap-4 mb-4">
+            <img src="https://img.rocket.new/generatedImages/rocket_gen_img_170f13f2a-1763299932393.png"
+                 alt="Foto de perfil de Carmen Rodríguez, clienta satisfecha"
+                 class="w-16 h-16 rounded-full object-cover"
+                 onerror="this.src='https://images.pexels.com/photos/415829/pexels-photo-415829.jpeg?auto=compress&cs=tinysrgb&w=100'; this.onerror=null;">
+            <div>
+              <h4 class="font-headline font-semibold text-lg">Carmen Rodríguez</h4>
+              <div class="flex gap-1">
+                <img src="https://img.rocket.new/generatedImages/rocket_gen_img_184280168-1764677508307.png"
+                     alt="Estrella de calificación" width="16" height="16">
+                <img src="https://img.rocket.new/generatedImages/rocket_gen_img_184280168-1764677508307.png"
+                     alt="Estrella de calificación" width="16" height="16">
+                <img src="https://img.rocket.new/generatedImages/rocket_gen_img_184280168-1764677508307.png"
+                     alt="Estrella de calificación" width="16" height="16">
+                <img src="https://img.rocket.new/generatedImages/rocket_gen_img_184280168-1764677508307.png"
+                     alt="Estrella de calificación" width="16" height="16">
+                <img src="https://img.rocket.new/generatedImages/rocket_gen_img_184280168-1764677508307.png"
+                     alt="Estrella de calificación" width="16" height="16">
+              </div>
+            </div>
+          </div>
+          <p class="text-text-secondary italic mb-4">
+            "Mis uñas de gel han durado más de 3 semanas sin descascararse. La atención al detalle y la calidad de los
+            productos que usan es excepcional. Totalmente recomendado."
+          </p>
+          <span class="text-sm text-text-muted">Hace 1 mes</span>
+        </div>
+
+        <!-- Testimonial 3 -->
+        <div
+          class="testimonial-card card-testimonial min-w-full md:min-w-[calc(50%-12px)] lg:min-w-[calc(33.333%-16px)] flex-shrink-0">
+          <div class="flex items-center gap-4 mb-4">
+            <img src="https://img.rocket.new/generatedImages/rocket_gen_img_13b9bbc26-1763299384254.png"
+                 alt="Foto de perfil de Laura Martínez, clienta satisfecha"
+                 class="w-16 h-16 rounded-full object-cover"
+                 onerror="this.src='https://images.pexels.com/photos/1239291/pexels-photo-1239291.jpeg?auto=compress&cs=tinysrgb&w=100'; this.onerror=null;">
+            <div>
+              <h4 class="font-headline font-semibold text-lg">Laura Martínez</h4>
+              <div class="flex gap-1">
+                <img src="https://img.rocket.new/generatedImages/rocket_gen_img_184280168-1764677508307.png"
+                     alt="Estrella de calificación" width="16" height="16">
+                <img src="https://img.rocket.new/generatedImages/rocket_gen_img_184280168-1764677508307.png"
+                     alt="Estrella de calificación" width="16" height="16">
+                <img src="https://img.rocket.new/generatedImages/rocket_gen_img_184280168-1764677508307.png"
+                     alt="Estrella de calificación" width="16" height="16">
+                <img src="https://img.rocket.new/generatedImages/rocket_gen_img_184280168-1764677508307.png"
+                     alt="Estrella de calificación" width="16" height="16">
+                <img src="https://img.rocket.new/generatedImages/rocket_gen_img_184280168-1764677508307.png"
+                     alt="Estrella de calificación" width="16" height="16">
+              </div>
+            </div>
+          </div>
+          <p class="text-text-secondary italic mb-4">
+            "El diseño de cejas cambió completamente mi rostro. Ahora mis cejas están perfectamente simétricas y
+            definidas. El personal es muy profesional y amable."
+          </p>
+          <span class="text-sm text-text-muted">Hace 3 semanas</span>
+        </div>
+
+        <!-- Testimonial 4 -->
+        <div
+          class="testimonial-card card-testimonial min-w-full md:min-w-[calc(50%-12px)] lg:min-w-[calc(33.333%-16px)] flex-shrink-0">
+          <div class="flex items-center gap-4 mb-4">
+            <img src="https://img.rocket.new/generatedImages/rocket_gen_img_14fbbc1e3-1765215925472.png"
+                 alt="Foto de perfil de Ana López, clienta satisfecha"
+                 class="w-16 h-16 rounded-full object-cover"
+                 onerror="this.src='https://images.pexels.com/photos/1181690/pexels-photo-1181690.jpeg?auto=compress&cs=tinysrgb&w=100'; this.onerror=null;">
+            <div>
+              <h4 class="font-headline font-semibold text-lg">Ana López</h4>
+              <div class="flex gap-1">
+                <img src="https://img.rocket.new/generatedImages/rocket_gen_img_184280168-1764677508307.png"
+                     alt="Estrella de calificación" width="16" height="16">
+                <img src="https://img.rocket.new/generatedImages/rocket_gen_img_184280168-1764677508307.png"
+                     alt="Estrella de calificación" width="16" height="16">
+                <img src="https://img.rocket.new/generatedImages/rocket_gen_img_184280168-1764677508307.png"
+                     alt="Estrella de calificación" width="16" height="16">
+                <img src="https://img.rocket.new/generatedImages/rocket_gen_img_184280168-1764677508307.png"
+                     alt="Estrella de calificación" width="16" height="16">
+                <img src="https://img.rocket.new/generatedImages/rocket_gen_img_184280168-1764677508307.png"
+                     alt="Estrella de calificación" width="16" height="16">
+              </div>
+            </div>
+          </div>
+          <p class="text-text-secondary italic mb-4">
+            "La pedicura spa es una experiencia celestial. Mis pies nunca se han visto ni sentido mejor. El masaje es
+            divino y el ambiente es perfecto para relajarse."
+          </p>
+          <span class="text-sm text-text-muted">Hace 1 semana</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Trust Indicators -->
+    <div class="grid md:grid-cols-3 gap-8 mt-16">
+      <div class="text-center">
+        <div class="text-5xl font-bold text-primary mb-2">500+</div>
+        <p class="text-text-secondary">Clientas Satisfechas</p>
+      </div>
+      <div class="text-center">
+        <div class="text-5xl font-bold text-primary mb-2">98%</div>
+        <p class="text-text-secondary">Tasa de Satisfacción</p>
+      </div>
+      <div class="text-center">
+        <div class="text-5xl font-bold text-primary mb-2">4.9</div>
+        <p class="text-text-secondary">Calificación en Google</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Pricing Section -->
+<section id="precios" class="section bg-surface">
+  <div class="container-custom">
+    <div class="text-center mb-16">
+      <h2 class="text-4xl md:text-5xl font-headline font-bold mb-6">
+        Precios Transparentes
+      </h2>
+      <p class="text-xl text-text-secondary max-w-3xl mx-auto">
+        Servicios premium a precios justos con paquetes especiales disponibles
+      </p>
+    </div>
+
+    <!-- Pricing Cards -->
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+      <!-- Basic Package -->
+      <div class="card card-hover">
+        <div class="text-center mb-6">
+          <h3 class="text-2xl font-headline font-semibold mb-2">Paquete Básico</h3>
+          <p class="text-text-secondary mb-4">Perfecto para mantenimiento regular</p>
+          <div class="text-4xl font-bold text-primary mb-2">65€</div>
+          <p class="text-sm text-text-muted">Ahorra 10€</p>
+        </div>
+        <ul class="space-y-3 mb-6">
+          <li class="flex items-start gap-2">
+            <img src="https://img.rocket.new/generatedImages/rocket_gen_img_10fe7876e-1764634748697.png"
+                 alt="Icono de verificación" width="20" height="20" class="flex-shrink-0 mt-1">
+            <span class="text-text-secondary">Manicura Clásica</span>
+          </li>
+          <li class="flex items-start gap-2">
+            <img src="https://img.rocket.new/generatedImages/rocket_gen_img_10fe7876e-1764634748697.png"
+                 alt="Icono de verificación" width="20" height="20" class="flex-shrink-0 mt-1">
+            <span class="text-text-secondary">Depilación de Cejas</span>
+          </li>
+          <li class="flex items-start gap-2">
+            <img src="https://img.rocket.new/generatedImages/rocket_gen_img_10fe7876e-1764634748697.png"
+                 alt="Icono de verificación" width="20" height="20" class="flex-shrink-0 mt-1">
+            <span class="text-text-secondary">Tinte de Pestañas</span>
+          </li>
+        </ul>
+        <button onclick="scrollToBooking()" class="btn-secondary w-full">Reservar Ahora</button>
+      </div>
+
+      <!-- Premium Package - Featured -->
+      <div class="card card-hover border-2 border-accent relative">
+        <div class="absolute -top-4 left-1/2 transform -translate-x-1/2">
+          <span class="bg-accent text-text-primary px-4 py-1 rounded-full text-sm font-cta font-bold shadow-accent">Más Popular</span>
+        </div>
+        <div class="text-center mb-6 mt-4">
+          <h3 class="text-2xl font-headline font-semibold mb-2">Paquete Premium</h3>
+          <p class="text-text-secondary mb-4">Experiencia completa de belleza</p>
+          <div class="text-4xl font-bold text-primary mb-2">120€</div>
+          <p class="text-sm text-text-muted">Ahorra 25€</p>
+        </div>
+        <ul class="space-y-3 mb-6">
+          <li class="flex items-start gap-2">
+            <img src="https://img.rocket.new/generatedImages/rocket_gen_img_10fe7876e-1764634748697.png"
+                 alt="Icono de verificación" width="20" height="20" class="flex-shrink-0 mt-1">
+            <span class="text-text-secondary">Uñas de Gel</span>
+          </li>
+          <li class="flex items-start gap-2">
+            <img src="https://img.rocket.new/generatedImages/rocket_gen_img_10fe7876e-1764634748697.png"
+                 alt="Icono de verificación" width="20" height="20" class="flex-shrink-0 mt-1">
+            <span class="text-text-secondary">Pedicura Spa</span>
+          </li>
+          <li class="flex items-start gap-2">
+            <img src="https://img.rocket.new/generatedImages/rocket_gen_img_10fe7876e-1764634748697.png"
+                 alt="Icono de verificación" width="20" height="20" class="flex-shrink-0 mt-1">
+            <span class="text-text-secondary">Diseño y Tinte de Cejas</span>
+          </li>
+          <li class="flex items-start gap-2">
+            <img src="https://img.rocket.new/generatedImages/rocket_gen_img_10fe7876e-1764634748697.png"
+                 alt="Icono de verificación" width="20" height="20" class="flex-shrink-0 mt-1">
+            <span class="text-text-secondary">Lifting de Pestañas</span>
+          </li>
+        </ul>
+        <button onclick="scrollToBooking()" class="btn-primary w-full">Reservar Ahora</button>
+      </div>
+
+      <!-- Luxury Package -->
+      <div class="card card-hover">
+        <div class="text-center mb-6">
+          <h3 class="text-2xl font-headline font-semibold mb-2">Paquete Lujo</h3>
+          <p class="text-text-secondary mb-4">Transformación completa VIP</p>
+          <div class="text-4xl font-bold text-primary mb-2">180€</div>
+          <p class="text-sm text-text-muted">Ahorra 40€</p>
+        </div>
+        <ul class="space-y-3 mb-6">
+          <li class="flex items-start gap-2">
+            <img src="https://img.rocket.new/generatedImages/rocket_gen_img_10fe7876e-1764634748697.png"
+                 alt="Icono de verificación" width="20" height="20" class="flex-shrink-0 mt-1">
+            <span class="text-text-secondary">Uñas de Gel con Arte</span>
+          </li>
+          <li class="flex items-start gap-2">
+            <img src="https://img.rocket.new/generatedImages/rocket_gen_img_10fe7876e-1764634748697.png"
+                 alt="Icono de verificación" width="20" height="20" class="flex-shrink-0 mt-1">
+            <span class="text-text-secondary">Pedicura Spa Premium</span>
+          </li>
+          <li class="flex items-start gap-2">
+            <img src="https://img.rocket.new/generatedImages/rocket_gen_img_10fe7876e-1764634748697.png"
+                 alt="Icono de verificación" width="20" height="20" class="flex-shrink-0 mt-1">
+            <span class="text-text-secondary">Diseño y Tinte de Cejas</span>
+          </li>
+          <li class="flex items-start gap-2">
+            <img src="https://img.rocket.new/generatedImages/rocket_gen_img_10fe7876e-1764634748697.png"
+                 alt="Icono de verificación" width="20" height="20" class="flex-shrink-0 mt-1">
+            <span class="text-text-secondary">Extensiones de Pestañas</span>
+          </li>
+          <li class="flex items-start gap-2">
+            <img src="https://img.rocket.new/generatedImages/rocket_gen_img_10fe7876e-1764634748697.png"
+                 alt="Icono de verificación" width="20" height="20" class="flex-shrink-0 mt-1">
+            <span class="text-text-secondary">Masaje de Manos y Pies</span>
+          </li>
+        </ul>
+        <button onclick="scrollToBooking()" class="btn-secondary w-full">Reservar Ahora</button>
+      </div>
+    </div>
+
+    <!-- Special Offer Banner -->
+    <div class="mt-16 bg-gradient-cta rounded-2xl p-8 text-center text-text-inverse max-w-4xl mx-auto">
+      <h3 class="text-3xl font-headline font-bold mb-4">Oferta Especial para Nuevas Clientas</h3>
+      <p class="text-xl mb-6">20% de descuento en tu primera visita</p>
+      <div class="flex items-center justify-center gap-4 mb-6">
+        <div class="countdown-timer">
+          <div class="text-4xl font-bold" id="countdown-days">00</div>
+          <div class="text-sm">Días</div>
+        </div>
+        <div class="text-3xl">:</div>
+        <div class="countdown-timer">
+          <div class="text-4xl font-bold" id="countdown-hours">00</div>
+          <div class="text-sm">Horas</div>
+        </div>
+        <div class="text-3xl">:</div>
+        <div class="countdown-timer">
+          <div class="text-4xl font-bold" id="countdown-minutes">00</div>
+          <div class="text-sm">Minutos</div>
+        </div>
+      </div>
+      <p class="text-sm mb-6">Solo quedan <span id="slots-remaining" class="font-bold">5</span> espacios disponibles
+        esta semana</p>
+      <button onclick="scrollToBooking()" class="btn-primary bg-surface text-primary hover:bg-background">
+        Reclamar Mi Descuento
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ Section -->
+<section id="faq" class="section">
+  <div class="container-custom">
+    <div class="text-center mb-16">
+      <h2 class="text-4xl md:text-5xl font-headline font-bold mb-6">
+        Preguntas Frecuentes
+      </h2>
+      <p class="text-xl text-text-secondary max-w-3xl mx-auto">
+        Respuestas a las preguntas más comunes sobre nuestros servicios
+      </p>
+    </div>
+
+    <div class="max-w-3xl mx-auto space-y-4">
+      <!-- FAQ Item 1 -->
+      <div class="card">
+        <button onclick="toggleFAQ(1)" class="w-full flex items-center justify-between text-left">
+          <h3 class="text-xl font-headline font-semibold">¿Cómo puedo reservar una cita?</h3>
+          <svg id="faq-icon-1" class="w-6 h-6 text-primary transition-transform" fill="none" stroke="currentColor"
+               viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+          </svg>
+        </button>
+        <div id="faq-content-1" class="hidden mt-4 text-text-secondary">
+          <p>Puedes reservar tu cita de tres formas: usando nuestro formulario de reserva en línea en esta página,
+            llamando directamente al spa, o enviándonos un mensaje por WhatsApp. Recomendamos reservar con al menos 48
+            horas de anticipación para garantizar tu horario preferido.</p>
+        </div>
+      </div>
+
+      <!-- FAQ Item 2 -->
+      <div class="card">
+        <button onclick="toggleFAQ(2)" class="w-full flex items-center justify-between text-left">
+          <h3 class="text-xl font-headline font-semibold">¿Cuánto duran los servicios?</h3>
+          <svg id="faq-icon-2" class="w-6 h-6 text-primary transition-transform" fill="none" stroke="currentColor"
+               viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+          </svg>
+        </button>
+        <div id="faq-content-2" class="hidden mt-4 text-text-secondary">
+          <p>La duración varía según el servicio: manicura clásica (60 min), uñas de gel (90 min), pedicura spa (75
+            min), depilación de cejas (20 min), tinte de cejas (30 min), extensiones de pestañas (120 min), lifting de
+            pestañas (60 min). Los paquetes combinados pueden tomar entre 2-4 horas.</p>
+        </div>
+      </div>
+
+      <!-- FAQ Item 3 -->
+      <div class="card">
+        <button onclick="toggleFAQ(3)" class="w-full flex items-center justify-between text-left">
+          <h3 class="text-xl font-headline font-semibold">¿Qué cuidados posteriores debo seguir?</h3>
+          <svg id="faq-icon-3" class="w-6 h-6 text-primary transition-transform" fill="none" stroke="currentColor"
+               viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+          </svg>
+        </button>
+        <div id="faq-content-3" class="hidden mt-4 text-text-secondary">
+          <p>Para uñas de gel: evita agua caliente las primeras 24 horas. Para extensiones de pestañas: no mojes durante
+            24 horas, evita productos aceitosos. Para cejas: no mojes durante 12 horas después del tinte. Te
+            proporcionaremos instrucciones detalladas después de cada servicio.</p>
+        </div>
+      </div>
+
+      <!-- FAQ Item 4 -->
+      <div class="card">
+        <button onclick="toggleFAQ(4)" class="w-full flex items-center justify-between text-left">
+          <h3 class="text-xl font-headline font-semibold">¿Son seguros los productos que utilizan?</h3>
+          <svg id="faq-icon-4" class="w-6 h-6 text-primary transition-transform" fill="none" stroke="currentColor"
+               viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+          </svg>
+        </button>
+        <div id="faq-content-4" class="hidden mt-4 text-text-secondary">
+          <p>Absolutamente. Utilizamos solo productos premium de marcas reconocidas como OPI, Essie, CND y Gelish. Todos
+            nuestros productos son hipoalergénicos, libres de crueldad animal y cumplen con los más altos estándares de
+            seguridad. Mantenemos estrictos protocolos de higiene y esterilización.</p>
+        </div>
+      </div>
+
+      <!-- FAQ Item 5 -->
+      <div class="card">
+        <button onclick="toggleFAQ(5)" class="w-full flex items-center justify-between text-left">
+          <h3 class="text-xl font-headline font-semibold">¿Ofrecen servicios para ocasiones especiales?</h3>
+          <svg id="faq-icon-5" class="w-6 h-6 text-primary transition-transform" fill="none" stroke="currentColor"
+               viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+          </svg>
+        </button>
+        <div id="faq-content-5" class="hidden mt-4 text-text-secondary">
+          <p>Sí, ofrecemos paquetes especiales para bodas, eventos corporativos, despedidas de soltera y otras ocasiones
+            especiales. Podemos acomodar grupos y ofrecer servicios personalizados. Contáctanos con anticipación para
+            discutir tus necesidades específicas.</p>
+        </div>
+      </div>
+
+      <!-- FAQ Item 6 -->
+      <div class="card">
+        <button onclick="toggleFAQ(6)" class="w-full flex items-center justify-between text-left">
+          <h3 class="text-xl font-headline font-semibold">¿Cuál es su política de cancelación?</h3>
+          <svg id="faq-icon-6" class="w-6 h-6 text-primary transition-transform" fill="none" stroke="currentColor"
+               viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+          </svg>
+        </button>
+        <div id="faq-content-6" class="hidden mt-4 text-text-secondary">
+          <p>Solicitamos al menos 24 horas de aviso para cancelaciones o reprogramaciones. Las cancelaciones con menos
+            de 24 horas de anticipación pueden estar sujetas a un cargo del 50% del servicio. Las ausencias sin aviso se
+            cobrarán al 100%. Entendemos que surgen emergencias, así que contáctanos lo antes posible.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Booking Section -->
+<section id="reserva" class="section bg-surface">
+  <div class="container-custom">
+    <div class="text-center mb-16">
+      <h2 class="text-4xl md:text-5xl font-headline font-bold mb-6">
+        Reserva Tu Cita Ahora
+      </h2>
+      <p class="text-xl text-text-secondary max-w-3xl mx-auto">
+        Completa el formulario y te confirmaremos tu cita en menos de 24 horas
+      </p>
+    </div>
+
+    <div class="max-w-4xl mx-auto">
+      <form id="booking-form" class="card">
+        <div class="grid md:grid-cols-2 gap-6">
+          <!-- Name -->
+          <div>
+            <label class="form-label">Nombre Completo *</label>
+            <input type="text" id="booking-name" class="form-input" placeholder="María González" required>
+          </div>
+
+          <!-- Email -->
+          <div>
+            <label class="form-label">Correo Electrónico *</label>
+            <input type="email" id="booking-email" class="form-input" placeholder="maria@ejemplo.com" required>
+          </div>
+
+          <!-- Phone -->
+          <div>
+            <label class="form-label">Teléfono *</label>
+            <input type="tel" id="booking-phone" class="form-input" placeholder="+34 600 000 000" required>
+          </div>
+
+          <!-- Service -->
+          <div>
+            <label class="form-label">Servicio *</label>
+            <select id="booking-service" class="form-input" required onchange="updateServiceDetails()">
+              <option value="">Selecciona un servicio</option>
+              <option value="manicure" data-duration="60" data-price="35">Manicura Clásica - 35€</option>
+              <option value="gel" data-duration="90" data-price="45">Uñas de Gel - 45€</option>
+              <option value="pedicure" data-duration="75" data-price="40">Pedicura Spa - 40€</option>
+              <option value="threading" data-duration="20" data-price="15">Depilación de Cejas - 15€</option>
+              <option value="tinting" data-duration="30" data-price="20">Tinte de Cejas - 20€</option>
+              <option value="extensions" data-duration="120" data-price="80">Extensiones de Pestañas - 80€</option>
+              <option value="lift" data-duration="60" data-price="55">Lifting de Pestañas - 55€</option>
+              <option value="lash-tint" data-duration="30" data-price="25">Tinte de Pestañas - 25€</option>
+              <option value="basic-package" data-duration="110" data-price="65">Paquete Básico - 65€</option>
+              <option value="premium-package" data-duration="205" data-price="120">Paquete Premium - 120€</option>
+              <option value="luxury-package" data-duration="285" data-price="180">Paquete Lujo - 180€</option>
+            </select>
+          </div>
+
+          <!-- Date -->
+          <div>
+            <label class="form-label">Fecha Preferida *</label>
+            <input type="date" id="booking-date" class="form-input" required min="" onchange="updateAvailableTimes()">
+          </div>
+
+          <!-- Time -->
+          <div>
+            <label class="form-label">Hora Preferida *</label>
+            <select id="booking-time" class="form-input" required>
+              <option value="">Selecciona primero la fecha</option>
+            </select>
+          </div>
+
+          <!-- Service Details Display -->
+          <div id="service-details" class="md:col-span-2 hidden bg-primary-50 rounded-lg p-4">
+            <div class="flex items-center justify-between">
+              <div>
+                <p class="text-sm text-text-secondary mb-1">Duración estimada:</p>
+                <p class="text-lg font-semibold text-primary" id="service-duration">-</p>
+              </div>
+              <div>
+                <p class="text-sm text-text-secondary mb-1">Precio:</p>
+                <p class="text-2xl font-bold text-primary" id="service-price">-</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Technician Preference -->
+          <div class="md:col-span-2">
+            <label class="form-label">Preferencia de Técnico (Opcional)</label>
+            <select id="booking-technician" class="form-input">
+              <option value="">Sin preferencia</option>
+              <option value="sofia">Sofía - Especialista en Uñas</option>
+              <option value="elena">Elena - Especialista en Cejas</option>
+              <option value="carmen">Carmen - Especialista en Pestañas</option>
+              <option value="laura">Laura - Todos los Servicios</option>
+            </select>
+          </div>
+
+          <!-- Comments -->
+          <div class="md:col-span-2">
+            <label class="form-label">Comentarios Adicionales (Opcional)</label>
+            <textarea id="booking-comments" class="form-input" rows="4"
+                      placeholder="¿Alguna solicitud especial o alergia que debamos conocer?"></textarea>
+          </div>
+
+          <!-- WhatsApp Confirmation -->
+          <div class="md:col-span-2">
+            <label class="flex items-center gap-2 cursor-pointer">
+              <input type="checkbox" id="whatsapp-confirm"
+                     class="w-5 h-5 text-primary border-border rounded focus:ring-accent">
+              <span class="text-text-secondary">Deseo recibir confirmación por WhatsApp</span>
+            </label>
+          </div>
+
+          <!-- Terms -->
+          <div class="md:col-span-2">
+            <label class="flex items-start gap-2 cursor-pointer">
+              <input type="checkbox" id="terms-accept"
+                     class="w-5 h-5 text-primary border-border rounded focus:ring-accent mt-1" required>
+              <span class="text-sm text-text-secondary">Acepto la política de cancelación (24 horas de aviso) y los términos de servicio *</span>
+            </label>
+          </div>
+        </div>
+
+        <!-- Submit Button -->
+        <div class="mt-8">
+          <button type="submit" class="btn-primary w-full text-lg">
+                            <span class="flex items-center justify-center gap-2">
+                                <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                          d="M5 13l4 4L19 7"/>
+                                </svg>
+                                Confirmar Reserva
+                            </span>
+          </button>
+        </div>
+
+        <!-- Contact Alternatives -->
+        <div class="mt-6 text-center">
+          <p class="text-text-secondary mb-4">¿Prefieres reservar por teléfono?</p>
+          <div class="flex flex-col sm:flex-row gap-4 justify-center">
+            <a href="tel:+34912345678" class="btn-outline flex items-center justify-center gap-2">
+              <img src="https://img.rocket.new/generatedImages/rocket_gen_img_1d89698ab-1764699966831.png"
+                   alt="Icono de teléfono" width="20" height="20">
+              +34 912 345 678
+            </a>
+            <a href="https://wa.me/34912345678" target="_blank"
+               class="btn-outline flex items-center justify-center gap-2">
+              <img src="https://img.rocket.new/generatedImages/rocket_gen_img_14c5ba833-1764657439993.png"
+                   alt="Icono de WhatsApp" width="20" height="20">
+              WhatsApp
+            </a>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- Contact & Location Section -->
+<section id="contacto" class="section">
+  <div class="container-custom">
+    <div class="text-center mb-16">
+      <h2 class="text-4xl md:text-5xl font-headline font-bold mb-6">
+        Visítanos
+      </h2>
+      <p class="text-xl text-text-secondary max-w-3xl mx-auto">
+        Estamos ubicados en el corazón de la ciudad, fácil acceso y estacionamiento disponible
+      </p>
+    </div>
+
+    <div class="grid lg:grid-cols-2 gap-12">
+      <!-- Contact Information -->
+      <div>
+        <div class="card mb-6">
+          <h3 class="text-2xl font-headline font-semibold mb-6">Información de Contacto</h3>
+
+          <div class="space-y-6">
+            <!-- Address -->
+            <div class="flex items-start gap-4">
+              <div class="w-12 h-12 rounded-full bg-primary-50 flex items-center justify-center flex-shrink-0">
+                <img src="https://img.rocket.new/generatedImages/rocket_gen_img_166ce0115-1766082050835.png"
+                     alt="Icono de ubicación" width="24" height="24">
+              </div>
+              <div>
+                <h4 class="font-semibold text-lg mb-1">Dirección</h4>
+                <p class="text-text-secondary">Calle Gran Vía 123, Local 5<br>28013 Madrid, España</p>
+              </div>
+            </div>
+
+            <!-- Phone -->
+            <div class="flex items-start gap-4">
+              <div class="w-12 h-12 rounded-full bg-primary-50 flex items-center justify-center flex-shrink-0">
+                <img src="https://img.rocket.new/generatedImages/rocket_gen_img_1d89698ab-1764699966831.png"
+                     alt="Icono de teléfono" width="24" height="24">
+              </div>
+              <div>
+                <h4 class="font-semibold text-lg mb-1">Teléfono</h4>
+                <a href="tel:+34912345678" class="text-text-secondary hover:text-primary transition-250">+34 912 345
+                  678</a>
+              </div>
+            </div>
+
+            <!-- Email -->
+            <div class="flex items-start gap-4">
+              <div class="w-12 h-12 rounded-full bg-primary-50 flex items-center justify-center flex-shrink-0">
+                <img src="https://img.rocket.new/generatedImages/rocket_gen_img_1e05497eb-1766051046019.png"
+                     alt="Icono de correo electrónico" width="24" height="24">
+              </div>
+              <div>
+                <h4 class="font-semibold text-lg mb-1">Email</h4>
+                <a href="mailto:info@francisbeautyspa.com"
+                   class="text-text-secondary hover:text-primary transition-250">info@francisbeautyspa.com</a>
+              </div>
+            </div>
+
+            <!-- Hours -->
+            <div class="flex items-start gap-4">
+              <div class="w-12 h-12 rounded-full bg-primary-50 flex items-center justify-center flex-shrink-0">
+                <img src="https://img.rocket.new/generatedImages/rocket_gen_img_14780272d-1764998168420.png"
+                     alt="Icono de horario" width="24" height="24">
+              </div>
+              <div>
+                <h4 class="font-semibold text-lg mb-1">Horario</h4>
+                <div class="text-text-secondary space-y-1">
+                  <p>Lunes - Viernes: 10:00 - 20:00</p>
+                  <p>Sábado: 10:00 - 18:00</p>
+                  <p>Domingo: Cerrado</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Social Media -->
+        <div class="card">
+          <h3 class="text-2xl font-headline font-semibold mb-6">Síguenos</h3>
+          <div class="flex gap-4">
+            <a href="https://instagram.com/francisbeautyspa" target="_blank"
+               class="w-12 h-12 rounded-full bg-gradient-primary flex items-center justify-center hover:shadow-primary transition-250">
+              <img src="https://img.rocket.new/generatedImages/rocket_gen_img_1f97f5c3f-1764677494753.png"
+                   alt="Icono de Instagram" width="24" height="24">
+            </a>
+            <a href="https://facebook.com/francisbeautyspa" target="_blank"
+               class="w-12 h-12 rounded-full bg-gradient-primary flex items-center justify-center hover:shadow-primary transition-250">
+              <img src="https://img.rocket.new/generatedImages/rocket_gen_img_139a69f39-1764650947150.png"
+                   alt="Icono de Facebook" width="24" height="24">
+            </a>
+            <a href="https://tiktok.com/@francisbeautyspa" target="_blank"
+               class="w-12 h-12 rounded-full bg-gradient-primary flex items-center justify-center hover:shadow-primary transition-250">
+              <img src="https://img.rocket.new/generatedImages/rocket_gen_img_1cf0b3786-1764666320023.png"
+                   alt="Icono de TikTok" width="24" height="24">
+            </a>
+            <a href="https://wa.me/34912345678" target="_blank"
+               class="w-12 h-12 rounded-full bg-gradient-primary flex items-center justify-center hover:shadow-primary transition-250">
+              <img src="https://img.rocket.new/generatedImages/rocket_gen_img_14c5ba833-1764657439993.png"
+                   alt="Icono de WhatsApp" width="24" height="24">
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Map -->
+      <div class="card p-0 overflow-hidden h-[500px]">
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3037.4849056450845!2d-3.7037902!3d40.4167754!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd42287f0000000%3A0x0!2zNDDCsDI1JzAwLjQiTiAzwrA0MicxMy42Ilc!5e0!3m2!1sen!2ses!4v1234567890123!5m2!1sen!2ses"
+          width="100%"
+          height="100%"
+          style="border:0;"
+          allowfullscreen=""
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+          title="Ubicación de Francis Beauty Spa en Madrid">
+        </iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="bg-primary text-text-inverse py-12">
+  <div class="container-custom">
+    <div class="grid md:grid-cols-4 gap-8 mb-8">
+      <!-- Brand -->
+      <div>
+        <div class="flex items-center gap-3 mb-4">
+          <svg width="40" height="40" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="24" cy="24" r="22" fill="#FFD700" stroke="#FFFFFF" stroke-width="2"/>
+            <path d="M24 12C18.5 12 14 16.5 14 22C14 27.5 18.5 32 24 32C29.5 32 34 27.5 34 22C34 16.5 29.5 12 24 12Z"
+                  fill="#FFFFFF" opacity="0.9"/>
+            <circle cx="20" cy="20" r="2" fill="#8B4B9C"/>
+            <circle cx="28" cy="20" r="2" fill="#8B4B9C"/>
+            <path d="M20 26C20 26 22 28 24 28C26 28 28 26 28 26" stroke="#8B4B9C" stroke-width="2"
+                  stroke-linecap="round"/>
+          </svg>
+          <div>
+            <h3 class="text-xl font-headline font-bold">Francis Nails & Beauty Spa</h3>
+            <p class="text-sm text-secondary-light font-accent">Tu belleza, nuestra pasión</p>
+          </div>
+        </div>
+        <p class="text-secondary-light text-sm">
+          Transformando la belleza natural con servicios profesionales desde 2017
+        </p>
+      </div>
+
+      <!-- Quick Links -->
+      <div>
+        <h4 class="font-headline font-semibold text-lg mb-4">Enlaces Rápidos</h4>
+        <ul class="space-y-2 text-secondary-light">
+          <li><a href="#servicios" class="hover:text-accent transition-250">Servicios</a></li>
+          <li><a href="#galeria" class="hover:text-accent transition-250">Galería</a></li>
+          <li><a href="#precios" class="hover:text-accent transition-250">Precios</a></li>
+          <li><a href="#testimonios" class="hover:text-accent transition-250">Testimonios</a></li>
+          <li><a href="#contacto" class="hover:text-accent transition-250">Contacto</a></li>
+        </ul>
+      </div>
+
+      <!-- Services -->
+      <div>
+        <h4 class="font-headline font-semibold text-lg mb-4">Servicios</h4>
+        <ul class="space-y-2 text-secondary-light">
+          <li>Manicura & Pedicura</li>
+          <li>Uñas de Gel</li>
+          <li>Diseño de Cejas</li>
+          <li>Extensiones de Pestañas</li>
+          <li>Lifting de Pestañas</li>
+        </ul>
+      </div>
+
+      <!-- Newsletter -->
+      <div>
+        <h4 class="font-headline font-semibold text-lg mb-4">Newsletter</h4>
+        <p class="text-secondary-light text-sm mb-4">
+          Recibe ofertas exclusivas y consejos de belleza
+        </p>
+        <form class="flex gap-2">
+          <input type="email" placeholder="Tu email"
+                 class="flex-1 px-4 py-2 rounded-lg text-text-primary focus:outline-none focus:ring-2 focus:ring-accent">
+          <button type="submit" class="btn-primary px-4 py-2">
+            <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
+            </svg>
+          </button>
+        </form>
+      </div>
+    </div>
+
+    <div class="divider border-secondary-light"></div>
+
+    <div class="flex flex-col md:flex-row justify-between items-center gap-4 text-secondary-light text-sm">
+      <p>© 2025 Francis Beauty Spa. Todos los derechos reservados.</p>
+      <div class="flex gap-6">
+        <a href="javascript:void(0)" class="hover:text-accent transition-250">Política de Privacidad</a>
+        <a href="javascript:void(0)" class="hover:text-accent transition-250">Términos de Servicio</a>
+        <a href="javascript:void(0)" class="hover:text-accent transition-250">Política de Cookies</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- Sticky Mobile CTA -->
+<div id="sticky-cta" class="sticky-cta bg-gradient-cta shadow-cta p-4">
+  <div class="container-custom">
+    <div class="flex items-center justify-between gap-4">
+      <div class="text-text-inverse">
+        <p class="font-semibold">¿Lista para transformar tu belleza?</p>
+        <p class="text-sm text-secondary-light">Reserva ahora con 20% de descuento</p>
+      </div>
+      <button onclick="scrollToBooking()" class="btn-primary whitespace-nowrap">
+        Reservar
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- Service Details Modal Overlay -->
+<div id="services-overlay" class="hidden fixed inset-0 bg-primary bg-opacity-90 z-50 overflow-y-auto">
+  <div class="min-h-screen px-4 py-8">
+    <div class="max-w-4xl mx-auto">
+      <div class="flex justify-end mb-4">
+        <button onclick="hideServicesOverlay()" class="text-text-inverse hover:text-accent transition-250">
+          <svg width="32" height="32" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+          </svg>
+        </button>
+      </div>
+      <div id="services-overlay-content" class="bg-surface rounded-2xl p-8">
+        <!-- Content will be dynamically inserted -->
+      </div>
+    </div>
+  </div>
+</div>

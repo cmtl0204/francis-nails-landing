@@ -137,6 +137,6 @@ export class Home implements OnInit {
       return;
     }
 
-    this.servicesFiltered = this.services.filter(item => item.category = category);
+    this.servicesFiltered = this.services.filter(item => item.category == category);
   }
 }

@@ -29,13 +29,16 @@
            href="#servicios" class=" hover:text-accent font-medium transition-250">Servicios</a>
         <a [class.text-text-inverse]="!isScrolled"
            [class.text-text-muted]="isScrolled"
-           href="#galeria" class="text-text-inverse hover:text-accent font-medium transition-250">Galería</a>
+           href="#beneficios" class="text-text-inverse hover:text-accent font-medium transition-250">¿Por qué elegirnos?</a>
         <a [class.text-text-inverse]="!isScrolled"
            [class.text-text-muted]="isScrolled"
-           href="#testimonios" class="text-text-inverse hover:text-accent font-medium transition-250">Testimonios</a>
-        <a [class.text-text-inverse]="!isScrolled"
-           [class.text-text-muted]="isScrolled"
-           href="#precios" class="text-text-inverse hover:text-accent font-medium transition-250">Precios</a>
+           href="#galeria" class="text-text-inverse hover:text-accent font-medium transition-250">Transformaciones Reales</a>
+        <!--        <a [class.text-text-inverse]="!isScrolled"-->
+<!--           [class.text-text-muted]="isScrolled"-->
+<!--           href="#testimonios" class="text-text-inverse hover:text-accent font-medium transition-250">Testimonios</a>-->
+<!--        <a [class.text-text-inverse]="!isScrolled"-->
+<!--           [class.text-text-muted]="isScrolled"-->
+<!--           href="#precios" class="text-text-inverse hover:text-accent font-medium transition-250">Precios</a>-->
         <a [class.text-text-inverse]="!isScrolled"
            [class.text-text-muted]="isScrolled"
            href="#contacto" class="text-text-inverse hover:text-accent font-medium transition-250">Contacto</a>
@@ -64,15 +67,18 @@
         <a href="#servicios" [class.text-text-inverse]="!isScrolled"
            [class.text-text-muted]="isScrolled"
            class="hover:text-accent font-medium transition-250 py-2 px-4">Servicios</a>
+        <a href="#beneficios" [class.text-text-inverse]="!isScrolled"
+           [class.text-text-muted]="isScrolled"
+           class="hover:text-accent font-medium transition-250 py-2 px-4">¿Por qué elegirnos?</a>
         <a href="#galeria" [class.text-text-inverse]="!isScrolled"
            [class.text-text-muted]="isScrolled"
-           class="hover:text-accent font-medium transition-250 py-2 px-4">Galería</a>
-        <a href="#testimonios" [class.text-text-inverse]="!isScrolled"
-           [class.text-text-muted]="isScrolled"
-           class="hover:text-accent font-medium transition-250 py-2 px-4">Testimonios</a>
-        <a href="#precios" [class.text-text-inverse]="!isScrolled"
-           [class.text-text-muted]="isScrolled"
-           class="hover:text-accent font-medium transition-250 py-2 px-4">Precios</a>
+           class="hover:text-accent font-medium transition-250 py-2 px-4">Transformaciones Reales</a>
+<!--        <a href="#testimonios" [class.text-text-inverse]="!isScrolled"-->
+<!--           [class.text-text-muted]="isScrolled"-->
+<!--           class="hover:text-accent font-medium transition-250 py-2 px-4">Testimonios</a>-->
+<!--        <a href="#precios" [class.text-text-inverse]="!isScrolled"-->
+<!--           [class.text-text-muted]="isScrolled"-->
+<!--           class="hover:text-accent font-medium transition-250 py-2 px-4">Precios</a>-->
         <a href="#contacto" [class.text-text-inverse]="!isScrolled"
            [class.text-text-muted]="isScrolled"
            class="hover:text-accent font-medium transition-250 py-2 px-4">Contacto</a>
@@ -392,7 +398,7 @@
       <div class="text-center">
         <div
           class="w-24 h-24 mx-auto mb-6 rounded-full bg-gradient-primary flex items-center justify-center shadow-primary">
-          <img src="/icons/technician.png"
+          <img src="/icons/benefits/technician.png"
                alt="Icono de certificación profesional" width="48" height="48">
         </div>
         <h3 class="text-xl font-headline font-semibold mb-3">Técnicos Certificados</h3>
@@ -405,7 +411,7 @@
       <div class="text-center">
         <div
           class="w-24 h-24 mx-auto mb-6 rounded-full bg-gradient-primary flex items-center justify-center shadow-primary">
-          <img src="/icons/product.png"
+          <img src="/icons/benefits/product.png"
                alt="Icono de productos premium" width="48" height="48">
         </div>
         <h3 class="text-xl font-headline font-semibold mb-3">Productos Premium</h3>
@@ -418,7 +424,7 @@
       <div class="text-center">
         <div
           class="w-24 h-24 mx-auto mb-6 rounded-full bg-gradient-primary flex items-center justify-center shadow-primary">
-          <img src="/icons/relax.png"
+          <img src="/icons/benefits/relax.png"
                alt="Icono de ambiente relajante" width="48" height="48">
         </div>
         <h3 class="text-xl font-headline font-semibold mb-3">Ambiente Relajante</h3>
@@ -431,7 +437,7 @@
       <div class="text-center">
         <div
           class="w-24 h-24 mx-auto mb-6 rounded-full bg-gradient-primary flex items-center justify-center shadow-primary">
-          <img src="/icons/result.png"
+          <img src="/icons/benefits/result.png"
                alt="Icono de resultados duraderos" width="48" height="48">
         </div>
         <h3 class="text-xl font-headline font-semibold mb-3">Resultados Duraderos</h3>
@@ -980,7 +986,7 @@
               </div>
               <div>
                 <h4 class="font-semibold text-lg mb-1">Teléfono</h4>
-                <a href="tel:+593978627513" class="text-text-secondary hover:text-primary transition-250">
+                <a href="https://api.whatsapp.com/message/ADZVUOCMU742B1" class="text-text-secondary hover:text-primary transition-250">
                   +593 97 862 7513
                 </a>
               </div>
@@ -1079,9 +1085,10 @@
         <h4 class="font-headline text-text-inverse font-semibold text-lg mb-4">Enlaces Rápidos</h4>
         <ul class="space-y-2 text-secondary-light">
           <li><a href="#servicios" class="hover:text-accent transition-250">Servicios</a></li>
-          <li><a href="#galeria" class="hover:text-accent transition-250">Galería</a></li>
-          <li><a href="#precios" class="hover:text-accent transition-250">Precios</a></li>
-          <li><a href="#testimonios" class="hover:text-accent transition-250">Testimonios</a></li>
+          <li><a href="#beneficios" class="hover:text-accent transition-250">¿Por qué elegirnos?</a></li>
+          <li><a href="#galeria" class="hover:text-accent transition-250">Transformaciones Reales</a></li>
+<!--          <li><a href="#precios" class="hover:text-accent transition-250">Precios</a></li>-->
+<!--          <li><a href="#testimonios" class="hover:text-accent transition-250">Testimonios</a></li>-->
           <li><a href="#contacto" class="hover:text-accent transition-250">Contacto</a></li>
         </ul>
       </div>

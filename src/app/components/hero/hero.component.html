@@ -1,0 +1,66 @@
+<!-- Hero Section -->
+<section
+  [style.paddingTop.px]="navbarHeight"
+  id="hero" class="relative min-h-screen flex items-center pt-20 overflow-hidden">
+  <!-- Background Image with Overlay -->
+  <div class="absolute inset-0 z-0">
+    <img src="/background.png"
+         alt="Elegante spa de belleza con ambiente relajante y decoración lujosa"
+         class="w-full h-full object-cover">
+    <div class="hero-overlay"></div>
+
+    <div class="absolute inset-0 gradient-overlay"></div>
+  </div>
+
+  <!-- Hero Content -->
+  <div class="container-custom relative z-10">
+    <div class="max-w-4xl mx-auto text-center text-text-inverse">
+      <h1 class="text-5xl md:text-6xl lg:text-7xl text-white font-headline font-bold mb-6 animate-fade-in">
+        Relájate, Brilla y Ponte Guapa!
+      </h1>
+      <p class="text-xl md:text-2xl mb-8 text-secondary-light animate-slide-up">
+        Arte profesional de uñas, diseño de cejas y realce de pestañas
+      </p>
+
+      <!-- CTA Buttons -->
+      <div class="flex flex-col sm:flex-row gap-4 justify-center mb-12 animate-scale-in">
+        <button type="button" (click)="reserve()" class="btn-primary text-lg px-10 py-5">
+                        <span class="flex items-center justify-center gap-2">
+                            <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                      d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
+                            </svg>
+                            Reserva Tu Cita Ahora
+                        </span>
+        </button>
+        <button (click)="reserve()"
+                class="btn-outline text-text-inverse text-lg px-10 py-5 bg-surface bg-opacity-20 backdrop-blur-sm">
+          Ver Nuestros Servicios
+        </button>
+      </div>
+
+      <!-- Trust Bar -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-3xl mx-auto">
+        <div class="bg-surface bg-opacity-20 backdrop-blur-md rounded-xl p-6 border border-accent">
+          <div class="text-4xl font-bold text-accent mb-2" id="appointments-counter">20</div>
+          <p class="text-sm text-secondary-light">Citas Completadas Este Mes</p>
+        </div>
+        <div class="bg-surface bg-opacity-20 backdrop-blur-md rounded-xl p-6 border border-accent">
+          <div class="text-4xl font-bold text-accent mb-2">8+</div>
+          <p class="text-sm text-secondary-light">Años de Experiencia</p>
+        </div>
+        <div class="bg-surface bg-opacity-20 backdrop-blur-md rounded-xl p-6 border border-accent">
+          <div class="text-4xl font-bold text-accent mb-2" id="satisfaction-counter">100%</div>
+          <p class="text-sm text-secondary-light">Satisfacción del Cliente</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scroll Indicator -->
+  <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
+    <svg width="24" height="24" fill="none" stroke="white" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"/>
+    </svg>
+  </div>
+</section>

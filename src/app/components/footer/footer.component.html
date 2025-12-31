@@ -1,0 +1,77 @@
+<!-- Footer -->
+<footer class="bg-primary text-text-inverse py-12">
+  <div class="container-custom">
+    <div class="grid md:grid-cols-4 gap-8 mb-8">
+      <!-- Brand -->
+      <div>
+        <div class="flex items-center gap-3 mb-4">
+          <img src="/logo.png" alt="">
+          <div>
+            <h3 class="text-xl text-secondary-light font-headline font-bold">Francis Nails & Beauty Spa</h3>
+            <p class="text-sm text-secondary-light font-accent">Tu belleza, nuestra pasión</p>
+          </div>
+        </div>
+        <p class="text-secondary-light text-sm">
+          Transformando la belleza natural con servicios profesionales
+        </p>
+      </div>
+
+      <!-- Quick Links -->
+      <div>
+        <h4 class="font-headline text-text-inverse font-semibold text-lg mb-4">Enlaces Rápidos</h4>
+        <ul class="space-y-2 text-secondary-light">
+          <li><a href="#servicios" class="hover:text-accent transition-250">Servicios</a></li>
+          <li><a href="#beneficios" class="hover:text-accent transition-250">¿Por qué elegirnos?</a></li>
+          <li><a href="#galeria" class="hover:text-accent transition-250">Transformaciones Reales</a></li>
+          <li><a href="#contacto" class="hover:text-accent transition-250">Contacto</a></li>
+        </ul>
+      </div>
+
+      <!-- Services -->
+      <div>
+        <h4 class="font-headline text-text-inverse font-semibold text-lg mb-4">Servicios</h4>
+        <ul class="space-y-2 text-secondary-light">
+          <li>Manicura & Pedicura</li>
+          <li>Uñas de Gel</li>
+          <li>Diseño de Cejas</li>
+          <li>Extensiones de Pestañas</li>
+          <li>Lifting de Pestañas</li>
+        </ul>
+      </div>
+
+      <!-- Newsletter -->
+      <div>
+        <h4 class="font-headline text-text-inverse font-semibold text-lg mb-4">Reservar</h4>
+        <p class="text-secondary-light text-sm mb-4">
+          Reserve su cita aquí
+        </p>
+
+        <button type="button" (click)="reserve()" class="btn-primary">
+          Reservar Cita
+        </button>
+
+      </div>
+    </div>
+
+    <div class="divider border-secondary-light"></div>
+
+    <div class="flex flex-col md:flex-row justify-between items-center gap-4 text-secondary-light text-sm">
+      <p>© 2025 Francis Nails & Beauty Spa. Todos los derechos reservados.</p>
+    </div>
+  </div>
+</footer>
+
+<!-- Sticky Mobile CTA -->
+<div id="sticky-cta" class="sticky-cta bg-gradient-cta shadow-cta p-4">
+  <div class="container-custom">
+    <div class="flex items-center justify-between gap-4">
+      <div class="text-text-inverse">
+        <p class="font-semibold">¿Lista para transformar tu belleza?</p>
+        <p class="text-sm text-secondary-light">Reserva ahora con 20% de descuento</p>
+      </div>
+      <button (click)="reserve()" class="btn-primary whitespace-nowrap">
+        Reservar
+      </button>
+    </div>
+  </div>
+</div>

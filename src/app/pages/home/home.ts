@@ -1,23 +1,18 @@
 import {Component, HostListener, OnInit, inject} from '@angular/core';
-import {NgClass} from '@angular/common';
 import {Meta, Title} from '@angular/platform-browser';
-
-interface Service {
-  id: string;
-  category: string;
-  title: string;
-  price: string;
-  duration: string;
-  serviceDuration: string;
-  description: string;
-  includes: string[];
-  image: string;
-}
+import {HeaderComponent} from '../../components/header/header.component';
+import {HeroComponent} from '../../components/hero/hero.component';
+import {ServicesComponent} from '../../components/services/services.component';
+import {FooterComponent} from '../../components/footer/footer.component';
+import {Service} from '../../models/service.interface';
 
 @Component({
   selector: 'app-home',
   imports: [
-    NgClass
+    HeaderComponent,
+    HeroComponent,
+    ServicesComponent,
+    FooterComponent
   ],
   templateUrl: './home.html',
   styleUrl: './home.scss',
@@ -65,22 +60,6 @@ export class Home implements OnInit {
   @HostListener('window:scroll')
   onScroll() {
     this.isScrolled = window.scrollY > 700; // px antes de activar fondo
-  }
-
-  mobileMenuOpen = false;
-
-  toggleMobileMenu() {
-    this.mobileMenuOpen = !this.mobileMenuOpen;
-  }
-
-  closeMobileMenu() {
-    this.mobileMenuOpen = false;
-  }
-
-  // (Opcional) si cambias a desktop, cierra el menú
-  @HostListener('window:resize')
-  onResize() {
-    if (window.innerWidth >= 768) this.closeMobileMenu();
   }
 
   reserve() {
@@ -138,5 +117,9 @@ export class Home implements OnInit {
     }
 
     this.servicesFiltered = this.services.filter(item => item.category == category);
+  }
+
+  closeModal() {
+    this.isVisibleModalService = false;
   }
 }

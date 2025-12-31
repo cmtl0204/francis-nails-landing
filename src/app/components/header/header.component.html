@@ -1,0 +1,77 @@
+<!-- Navigation Header -->
+<nav class="fixed top-0 w-full z-50 pb-20 transition-all duration-300"
+     [ngClass]="isScrolled
+    ? 'bg-white/80 backdrop-blur-md shadow-lg'
+    : 'bg-black/40 backdrop-blur-sm'
+  ">
+  <div class="container-custom">
+    <div class="flex items-center justify-between py-4">
+      <!-- Logo -->
+      <div class="flex items-center space-x-3">
+        <img src="/logo.png" alt="Logo">
+
+        <div [class.text-text-inverse]="!isScrolled"
+             [class.text-text-muted]="isScrolled"
+             class="text-2xl font-headline font-bold text-primary">
+          Francis Nails & Beauty Spa
+
+          <p [class.text-text-inverse]="!isScrolled"
+             [class.text-text-muted]="isScrolled"
+             class="text-md font-accent">Relájate, brilla y ponte guapa
+          </p>
+        </div>
+      </div>
+
+      <!-- Desktop Navigation -->
+      <div class="hidden md:flex items-center space-x-8">
+        <a [class.text-text-inverse]="!isScrolled"
+           [class.text-text-muted]="isScrolled"
+           href="#servicios" class=" hover:text-accent font-medium transition-250">Servicios</a>
+        <a [class.text-text-inverse]="!isScrolled"
+           [class.text-text-muted]="isScrolled"
+           href="#beneficios" class="text-text-inverse hover:text-accent font-medium transition-250">¿Por qué elegirnos?</a>
+        <a [class.text-text-inverse]="!isScrolled"
+           [class.text-text-muted]="isScrolled"
+           href="#galeria" class="text-text-inverse hover:text-accent font-medium transition-250">Transformaciones Reales</a>
+        <a [class.text-text-inverse]="!isScrolled"
+           [class.text-text-muted]="isScrolled"
+           href="#contacto" class="text-text-inverse hover:text-accent font-medium transition-250">Contacto</a>
+        @if (mobileMenuOpen) {
+          <button type="button" (click)="reserve()" class="btn-primary">Reservar Cita</button>
+        }
+      </div>
+
+      <!-- Mobile Menu Button -->
+      <button type="button"
+              [class]="isScrolled ? 'md:hidden text-primary' : 'md:hidden text-white'"
+              (click)="toggleMobileMenu()"
+              aria-controls="mobile-menu"
+              [attr.aria-expanded]="mobileMenuOpen">
+        <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+        </svg>
+      </button>
+    </div>
+
+    <!-- Mobile Menu -->
+    <div id="mobile-menu"
+         [class]="isScrolled ? 'md:hidden pb-4 bg-white/90 backdrop-blur-md shadow-lg' : 'md:hidden pb-4 bg-black/70 backdrop-blur-md shadow-lg'"
+         [class.hidden]="!mobileMenuOpen">
+      <div class="flex flex-col space-y-3">
+        <a href="#servicios" [class.text-text-inverse]="!isScrolled"
+           [class.text-text-muted]="isScrolled"
+           class="hover:text-accent font-medium transition-250 py-2 px-4">Servicios</a>
+        <a href="#beneficios" [class.text-text-inverse]="!isScrolled"
+           [class.text-text-muted]="isScrolled"
+           class="hover:text-accent font-medium transition-250 py-2 px-4">¿Por qué elegirnos?</a>
+        <a href="#galeria" [class.text-text-inverse]="!isScrolled"
+           [class.text-text-muted]="isScrolled"
+           class="hover:text-accent font-medium transition-250 py-2 px-4">Transformaciones Reales</a>
+        <a href="#contacto" [class.text-text-inverse]="!isScrolled"
+           [class.text-text-muted]="isScrolled"
+           class="hover:text-accent font-medium transition-250 py-2 px-4">Contacto</a>
+        <button (click)="reserve()" class="btn-primary w-full mt-2">Reservar Cita</button>
+      </div>
+    </div>
+  </div>
+</nav>
